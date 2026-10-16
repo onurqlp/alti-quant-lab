@@ -1,0 +1,67 @@
+name: ALTI Read-Only Research & Pages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'data/**'
+      - 'site/report.json'
+
+concurrency:
+  group: alti-market-research-main
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run four essential contract tests
+        run: python -m unittest discover -s tests -q
+      - name: Scan official public market-data endpoints (no keys, no orders)
+        run: python -m alti.worker
+      - name: Commit append-only audit and latest atomic snapshot
+        run: |
+          git config user.name "ALTI Research Worker"
+          git config user.email "alti-research-bot@users.noreply.github.com"
+          git add data/audit.jsonl data/recent_observations.json data/scan_index.json site/report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: read-only UTC funding and quote scan [skip ci]"
+            git push origin HEAD:main
+          fi
+
+  publish:
+    needs: scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload standalone mobile site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Publish
+        id: deployment
+        uses: actions/deploy-pages@v4

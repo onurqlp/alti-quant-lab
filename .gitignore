@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+*.sqlite*
+*.db
+.pytest_cache/
+.DS_Store
+site/report.json.tmp
+data/*.tmp
+legacy/output/

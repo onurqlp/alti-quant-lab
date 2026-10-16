@@ -1,0 +1,105 @@
+ALTI — OTOMATİK QUANT ARAŞTIRMA VE FIRSAT LABORATUVARI
+CODEX MASTER UYGULAMA PROMPTU · 16 EKİM 2026
+
+ROLÜN
+Kıdemli quant researcher, Python/backend mühendisi, istatistikçi, finansal piyasalar veri mimarı, risk yöneticisi ve ürün tasarımcısı gibi davran. Sana verilen ZIP içindeki mevcut kodu oku; yalnızca aşağıdaki ALTI strateji için yeni ve bağımsız bir ürün geliştir. Bu bir eğitim/sinyal/araştırma platformu olarak başlayacak. Canlı emir, cüzdan, fon transferi, müşterilerin para yönetimi veya yüksek kaldıraç işlemi BAŞLANGIÇTA KAPALIDIR.
+
+KULLANICI AMACI
+İki ortak, 100–200 bin TL sermaye bandında, özellikle 150.000 TL referansla, boş zamanlarında sistemi bir kez inşa ederek uzun vadede mümkün olduğunca otomatik nicel analiz yapacak ve bazı piyasa avantajlarının ücret/finansman maliyeti sonrası gerçekten var olup olmadığını ölçecek. Bilgisayarları kapalıyken bulut sunucusunda çalışabilecek. Düzenli elle traderlık, müşteri arama veya stok ticareti istemiyorlar. Özellikle matematikle ölçülebilen, ekran kartsız mining benzeri otomasyon arıyorlar. Onlara boş umut değil, kanıtla eleme sistemi kur.
+
+ALTI VE SADECE ALTI MODÜL
+1. Tahvil–repo finansman farkı (T0)
+2. Hisse pairs trading (A1)
+3. ETF–ETF göreli değer farkı (A2)
+4. Stablecoin fiyat sapması (B2)
+5. Perpetual funding interval/vade farkı (B1)
+6. İstatistiksel sepet/cointegration (A3)
+Yedinci strateji, momentum botu, DEX MEV, madencilik, kupon veya yeni iş modeli ekleme. Başka projelerin kodunu karıştırma. Coin.Live ile bu projenin yalnız düşünsel benzerliği var; burada AYRI bir repo, veri deposu ve ürün inşa edilecek.
+
+KARAR: ALTI BOT YOK, ÜÇ BAĞIMSIZ MOTOR VAR
+Motor A = İstatistiksel Göreli Değer: A1 pairs + A2 ETF–ETF + A3 basket; aynı veri/maliyet/statistik altyapısını paylaşır. Aynı hisseden türeyen üç sinyali üç bağımsız işlem sayma. Hisse short/ödünç erişimi ve ETF'nin gerçek dayanak benzerliği doğrulanmalı.
+Motor B = Kripto Farkları: B1 funding aralığı karşılaştırma + B2 stablecoin sapması; stablecoin teminat riski funding gözlemine risk filtresi sağlar, stablecoin kazancını funding gelirine ikinci kez ekleme. Funding farkından kendi kendine kesin gelir varsayma.
+Motor C = Sabit Getirili Finansman: T0 tahvil–repo; gerçek dealer erişimi ve onaylı data yoksa yalnız araştırma göster. Yıllık tahvil getiri – repo oranı = garantili spread DEME.
+
+BAŞLANGIÇ PAKETİNİ KULLAN
+ZIP içeriğini önce incele:
+- README.md
+- docs/ANALIZ_VE_YOL_HARITASI.md
+- docs/MIMARI_VE_VERI_SOZLESMESI.md
+- docs/KAYNAKLAR.md
+- lab/core.py
+- lab/demo.py
+- config/research_config.json
+- tests/test_smoke.py
+Bu başlangıçta iki seviyeli bağımlılık var: numpy, statsmodels. Demo veri tamamen sentetik; asla gerçek performans diye gösterme.
+
+MUTLAK ÇIKTI KRİTERLERİ
+Bir araştırma ve karar sitesi oluşacak. Dashboard Türkçe, mobil-öncelikli, profesyonel, açık ve hızlı olsun. Her model için 1) net tanım 2) hangi piyasalardan veri alacak 3) fiyat/fonlama/finansman matematiği 4) açılmama nedenleri 5) güncel veri/quote yaşı 6) formation/test penceresi 7) izleme statüsü 8) maliyet kalemleri 9) canlı ileri takip 10) sanal deneme sonuçları ayrı.
+İLK AÇILIŞ: Altı strateji kutusu, üç ana motor, verinin gerçek/sentetik durumu, son başarılı tarama, piyasa saatleri, tek sanal araştırma kasası, total risk, izle/ölç/ele/sakla akışı. Kullanıcının yanlışlıkla bir araştırma sinyalini kesin alım satım emri sanmasına yol açma.
+GÖZLEMLER: Yeni/izle/erişim yok/veri eski/maliyet yüzünden reddedildi/ileri sanal bekliyor/paper açık/paper kapalı/geçersiz. Kapanan ve reddedilenleri 7–14 gün rapor için sakla, sahte başarısız sinyalleri kaybetme.
+GRAFİK: Borsa pair ve ETF için iki fiyatın normalleştirilmiş grafiği + formation hedge residual ve z-score; basket için residual; funding için olay zamanları ve dönem-normalize oran + realized/predicted ayrımı; stablecoin için bid/ask/derinlik/peg sapması; tahvil–repo için faiz eğrisi/haircut/duration şok tablosu.
+
+ÖNCELİK 0 — ÖNCE GERÇEK VERİ KAYNAKLARININ UYGULANABİLİRLİĞİ
+Aşama sıralaması:
+(1) Finansal piyasa/veri sağlayıcısı/ülke erişim doğrulama tablosu yaz: Binance USD-M, OKX, hisse/ETF lisanslı kaynakları, Borsa İstanbul/tahvil-repo erişimi. Resmî doküman bağlantısını tut. Bu erişimleri VARSAYMA; uydurma API KEY veya gizli anahtar üretme.
+(2) Kaynağı erişilebilen modüller için READ-ONLY adapter geliştir. Funding'den başla; rate + interval + fundingTime + nextFundingTime + realized/predicted + exchange + contract multiplier + fee schedule. Stablecoin için tradeable eşdeğer enstrümanın iki venue bid/ask + orderbook depth + timestamp. İlgili piyasa Türkiye/hesap konumunda erişilemiyorsa STATUS=ACCESS_BLOCKED göster.
+(3) Hisse/ETF için split/dividend-adjusted close, mümkünse gerçek bid/ask, currency, market schedule, corporate action, borrowability; "public intraday quote" izni yoksa lüzumsuz scraping yapma. Verisizse istatistik motoru araştırma/demo olarak kalır.
+(4) Tahvil–repo için dirty/clean price, bond ID/ISIN, coupon, maturity, YTM, modified duration, convexity, repo tenor/rate, collateral/haircut, lot size, dealer erişimi; bunlar yoksa sadece kavramsal ekran. Gerçek repo arbitrajı gibi pozisyon önermesin.
+
+ÖNCELİK 1 — İSTATİSTİKSEL MOTOR
+- Pair universe filtering: aynı sektör, likidite, ödünç/short uygunluğu, piyasa/kur eşleşmesi, corporate action temizliği.
+- Formation (train) + validation + out-of-sample + gerçek forward ayrımını kesin uygula. Engle–Granger coint ve ADF kullan; p-değerleri veri madenciliği sonucunda artar; Benjamini–Hochberg FDR veya uygun discovery/validation split ile düzelt. Modelin sınırları kaydedilsin.
+- Hedge ratio log fiyat regresyonundan çıkarılabilir ama gerçek işlem lot/nakit/short miktarına çevirmek ayrı executable katman gerektirir.
+- ETF: benchmark/endeks, replikasyon, fee, para birimi, hedge, temettü ve NAV veri gecikmesi filtreleri. ETF–ETF long/short uygulanabilirse göreli değer; uygulanamıyorsa LONG-ONLY/RESEARCH olarak açıkça ayrılır. ETF AP yaratma/itfa hakkı varmış gibi konuşma.
+- Basket: Çoklu değişkenlerin uygun Johansen cointegration rank/term spesifikasyonu veya savunulabilir ekonomik teori ve out-of-sample doğrulama; şu an demo core'da bulunan residual ADF yalnız SCREEN_ONLY. Bunu ayrı ciddi analizle geliştir; genel dashboard'da yanlışlıkla "cointegrated CONFIRMED" verme.
+- Rolling formation/walk-forward, parameter freeze, no lookahead, no survivorship-free universe assumption, purged embargo where needed, transaction-cost sensitivity, borrow fee, spread, slippage, volatility regime, stress.
+- Pairs ve basket aynı varlığa exposure çoğaltırsa risk motoru baskılasın; aynı faktör/indeks maruziyetini raporlasın.
+
+ÖNCELİK 2 — KRİPTO MOTORU
+- Funding: Gözlenen rate kesir mi yüzde mi doğrula; 0.0001 fraction = %0.01. Olay zamanına ve gerçek funding interval'e göre ortak döneme normalize et. Binance ve OKX'in değişen oran/dönem mekanizmasını takip et. En son rate'yi 24 saat sabitmiş gibi gerçek getiri olarak kaydetme. Borsa A ve B'nin farklı settlement time ve sözleşme yapısı varsa fırsat eşdeğer kabul edilmez.
+- Stablecoin: Exact token contract/issuer/chain ve doğru ticker mapping, peg tracking, haircut/depeg alarm, iki yönlü actionable quote, available depth, route/transfer feasibility, issuer redemption eligibility. Token 0.98'e düşmüş diye 2% guaranteed getiri üretme.
+- Her fırsat için kapanma/hedge maliyeti, taker+maker, funding ödemesi net yön, spot/derivative basis, margin, borrow, liquidation buffer, exchange credit risk.
+- İlk iterasyon yalnız watch+shadow; 'execute' kutusu kullanıcı görmesin veya disable olsun.
+
+ÖNCELİK 3 — TAHVİL REPO
+- Financial statement: YTM/repo rate differential bir risk ekranıdır, kilitlenmiş getiri değildir. Repo başlangıç/bitiş valörü, margin/haircut, teminat fiyat şoku ve bond duration/convexity hesaplanmadan trade-ready yok.
+- BIST Repo/Ters Repo piyasa mekaniklerini kendi resmî kaynağından doğrula, bireysel/kurumsal işlem hakkını gerçek broker ile öğren. Veri lisanslaması/teminat/short koşulu yoksa NOT_EXECUTABLE; yatırım kararı çıkartma.
+
+RİSK ÜST KATMANI
+- Referans toplam kasa 150.000 TRY, bu bir GERÇEK YATIRILMIŞ KASA değil: kullanıcı para yatırmadan hiçbir yerde "deposit funded" yazma. 40% nakit rezerv varsayımı, paper tek hipotez risk bütçesi 0.25% referans sermaye, paper gross exposure tavanı 20%; bunlar kullanıcı ayarı olmalı ve kesin öneri değil.
+- TRY/USD/USDT bakiyeleri ayrı tut; timestamp/fx spread olmadan birleştirme. Her modülün ve motorun sanal maruziyetini ayır. Aynı kripto varlığı veya endeks 2 ayrı sinyalden geliyorsa ortak exposure ve rehypothecation/teminat riski raporlanır.
+- Signal oluştuğu mumun kapanışından önce dolum varsayma. Sonraki timestamp'li karşı emir/quote/l2 kullan; kısmi dolum, ret, spread, borrow fee, repo roll, funding reversal. Fill verisi yoksa PAPER_NO_FILL ve net kar=UNKNOWN. Synthetic fill = SYNTHETIC ayrı.
+- Kahramanca leverage, martingale, sınırsız averaging down, auto-fund transfer, API withdraw izni YASAK. Live trading kullanıcı ayrıca açıkça, spesifik şartlarla yetki verene kadar imkânsız olmalı.
+- Data stale, wrong rate unit, exchange access rejected, missing hedge, weak orderbook, statistical structural break, duplicate strategy veya risk cap durumu red gerekçeleri net.
+
+SUNUCU VE VERİ ÇALIŞMA
+- Eşzamanlı veri ve sinyal hesaplarının hepsi UTC timestamp; idempotent scan_id; append-only audit; JSON dashboard atomik güncelleme. GitHub Pages sadece gösterim olabilir; dinamik veri akışı için worker + kalıcı depolama gerekir. Makinemiz kapalı olsa da programın çalışmasına olanak tanı; scheduler SLA yoksa '5dk kesin' deme.
+- Veri sağlama/işleme için request retry/backoff ve rate limit; resmi API değişikliği olduğunda fail closed. API anahtarları yalnız environment/secret; repo veya browser içine gömme. İki kişilik proje olsa bile parasal güvenlik önemlidir.
+- Testler: Kullanıcı gereksiz zaman tüketen yüzlerce testi istemiyor. Önce kritik 4 smoke, sonra yalnız değiştirilen hesap motoru/adapter/risk kapısına 1-2 regresyon testi; canlı para açma öncesi kapsamlı bağımsız denetim zorunlu.
+
+YÖNETİM PANELİ TASARIMI
+- Türkçe, mobil birinci. Üstte veri sağlığı ve son gerçek tarama; yanında gözlem sayısı ve teyitlenmemiş veri ikazı.
+- 'İSTATİSTİKSEL' → pairs / ETF / basket sekmeleri. 'KRİPTO FARKLARI' → funding / stablecoin. 'TAHVİL–REPO' → erişim / risk / oran ekranı.
+- Üstte tek 150.000 TRY sanal referans; altta motorlara ayrılmış risk toplamı, varsayımsal shadow fırsatlar, gerçekte dolan paper işlemler, 7/14/30 gün hareket ve sebep analitiği. Synthetic/demo hiçbir zaman gerçek PnL ile karışmaz.
+- Her aday için: niçin? hangi kaynak? ne zaman güncel? neden şimdi trade-ready DEĞİL? her maliyet kırılımı ve başarısızlık sebebi. İlgili analitik doğrudan detay içinde; okunabilir grafik, tek kaydırma.
+
+UYGULAMA PLANI VE TESLİM
+Faz 0 — Bu ZIP'i içeri al, mevcut demo çalışıyor mu kısa smoke et, gereksinim listesi ve veri sağlayıcı/açığa satış/repo erişim engellerini tabloya yaz.
+Faz 1 — Gerçek public/read-only funding API adapter + akış metadata ve period compare + basit yayınlanan dashboard. Bu ilk gerçek veri modülüdür ve erişim engelleri yoksa değerlidir.
+Faz 2 — Stablecoin gerçek quote karşılaştırıcısı ve market depth; BUY/SELL otomasyon yok. Motor B için ilk 7 günlük ileri gözlem.
+Faz 3 — Motor A hisse/ETF veri kaynağı/izinleri ile formation-OOS; portfolio duplicate risk. Kaliteli veri yoksa bu modül not_connected ve demo olarak kalır, sahte piyasa yapma.
+Faz 4 — Basket için daha yüksek kanıt standardı; tahvil/repo broker ve veri erişim fizibilitesi. Bu ikisini zorlayıp sistemin diğer modüllerini geciktirme.
+Faz 5 — İnsan onaylı ileri paper portföy, dashboard, net maliyet ve risk; strateji/stage karşılaştırması; ayrıca kullanıcı isterse gerçek işlemlerin yasal/teknik güvenlik kontrol listesini hazırlama (canlı API ile işlem yapma yetkisi değildir).
+
+CODEx ÇALIŞMA ŞEKLİ
+- Başlangıçta uzun teorik rapor yazıp kodu ihmal etme. Belirlenen fazları kısa commitlerle uygula, çalışan ürüne ilerle. İlk committe tek küçük ama çalışır read-only gerçek veri modülünün başlangıcını göster.
+- Eğer yeni projede GitHub bağlantısı varsa yeni ve ayrı repo aç. Önce repo adını açıkla ve var olan COIN.LIVE PRO repolarını etkileme. Repo oluşturma yetkisi yoksa yerel kaynak kodu ZIP olarak hazırla ve tam kurulum adımlarını ver.
+- Kullanıcının veri yetkisi veya hesap erişimi yoksa buna dair net not düş; secret, auth, lisans veya endpoint uydurma. Bir sonraki uygun faza geçebilirsin ama eksik ürüne kesin çalışıyor etiketi koyma.
+- Tests: İlgili tek hızlı smoke; CI koşusunu gerçekten görmediysen PASSED deme.
+- Kaynakları öncelikle resmî borsa/broker/fon/istatistik kütüphanelerinden doğrula, linklerle dökümante et.
+- Her gerçek çıktı ve ekran: DEMO, READ_ONLY_LIVE, PAPER_FORWARD ya da VERIFIED_REAL olarak işaretli. VERIFIED_REAL ancak gerçek işlem geçmişiyle, kullanıcı onayıyla ve yasal erişimle mümkündür.
+- Her yeni modülün minimum raporu: NELER YAPILDI, NELER YAPILMADI, CANLI VERİ VAR MI, NE GERÇEKTEN TEST EDİLDİ, SONRAKİ ADIM.
+
+TASARIM YOL HARİTASINDA 6 MODÜL DIŞINA ÇIKMA. İŞİN EN ÖNEMLİ İÇGÖRÜSÜ: PAIRS + ETF + BASKET AYNI STATİSTİKSEL EKONOMİK VARLIĞI, STABLECOIN + FUNDING AYNI KRİPTO TEMİNAT RİSKİNİ FARKLI AÇIDAN ÖLÇER. TAHVİL–REPO İSE BAĞIMSIZ KURUMSAL FİNANSMAN MODÜLÜDÜR. KODU VE RİSK YÖNETİMİNİ BUNA GÖRE KUR.
+
+ŞİMDİ BAŞLA: Önce ZIP'i incele, demo sonucunun SYNTHETIC olduğunu doğrula, aşama 0/1'e geç ve kullanıcıyı ayar yüküne boğmadan ortaya çalışan read-only MVP koy.

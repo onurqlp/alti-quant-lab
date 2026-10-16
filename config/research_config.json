@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-read-only-mvp",
+  "initial_reference_capital_try": 150000,
+  "protected_reserve_percent": 40,
+  "paper_trade_risk_percent": 0.25,
+  "paper_gross_exposure_percent": 20,
+  "live_orders_enabled": false,
+  "enable_transfers": false,
+  "requires_timestamped_fx": true,
+  "requires_next_executable_quote_for_fill": true,
+  "retention_days": 14,
+  "symbols": ["BTCUSDT", "ETHUSDT"],
+  "source_retry_count": 1,
+  "read_only": true
+}

@@ -1,0 +1,28 @@
+{
+  "version": "0.1.0-research-only",
+  "base_currency": "TRY",
+  "initial_reference_capital_try": 150000,
+  "protected_reserve_percent": 40,
+  "paper_trade_risk_percent": 0.25,
+  "paper_gross_exposure_percent": 20,
+  "live_orders_enabled": false,
+  "live_broker_keys_allowed_in_repo": false,
+  "mode": "SYNTHETIC_DEMO",
+  "strict_timestamp_matching": true,
+  "no_fx_netting_without_fresh_usdtry": true,
+  "no_fill_without_executable_next_quote": true,
+  "statistical_formation_fraction": 0.7,
+  "require_borrow_permission_for_short": true,
+  "require_repo_counterparty_access_for_live": true,
+  "signals_are_not_trades": true,
+  "funding_is_not_fixed_interest": true,
+  "skip_execution_if_missing_data": true,
+  "strategies": [
+    "equity_pairs_trading",
+    "etf_etf_relative_value",
+    "cointegrated_basket",
+    "stablecoin_dislocation",
+    "perpetual_funding_interval",
+    "bond_repo_financing"
+  ]
+}

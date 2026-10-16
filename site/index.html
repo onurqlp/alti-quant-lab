@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1424">
+<meta name="description" content="ALTI Quant Research Lab — altı strateji, üç bağımsız araştırma motoru, ortak risk ve salt okunur piyasa analizi.">
+<title>ALTI — Quant Research Lab</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><span class="brandmark">A<span>·</span></span><div><strong>ALTI</strong><small>QUANT RESEARCH LAB</small></div></div>
+  <nav aria-label="Sayfa bölümleri" class="toplinks"><a href="#motorlar">Motorlar</a><a href="#arastirma">Analiz</a><a href="#kayitlar">Gözlemler</a></nav>
+  <div class="topend"><span id="top-signal" class="live-dot">Veri bekleniyor</span><button type="button" class="refresh" id="refresh" title="Yayımlanmış son veriyi yeniden yükle">↻ <span>Veriyi yenile</span></button></div>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-left">
+   <span class="eyebrow"><span class="micro-dot"></span> ANALYTICS / RESEARCH TERMINAL <span class="slash">/</span> v1.0</span>
+   <h1>Fırsatı tahmin etme.<br><em>Veriyle doğrula.</em></h1>
+   <p class="lead">Altı strateji. Üç bağımsız araştırma motoru. Tek sanal risk kasası. Net avantajı kanıtlayamayan gözlemler elenir.</p>
+   <div class="hero-tags"><span>◈ READ-ONLY</span><span>◌ EMİR YOK</span><span>◎ UTC VERİ DOĞRULAMA</span></div>
+  </div>
+  <div class="scan-panel" aria-live="polite">
+    <div class="scan-header"><span>VERİ SAĞLIĞI</span><span class="scan-orb" id="health-orb"></span></div>
+    <div id="health-title" class="health-title">İlk gerçek tarama bekleniyor</div>
+    <p id="health-description">Henüz borsa API'sinden doğrulanmış gözlem yayınlanmadı.</p>
+    <div class="scan-lines"><span>Son tarama</span><strong id="last-scan">—</strong></div>
+    <div class="scan-lines"><span>Son başarılı</span><strong id="last-success">—</strong></div>
+    <div class="scan-lines"><span>Çalışma biçimi</span><strong>READ-ONLY / 30 dk hedef</strong></div>
+  </div>
+</section>
+<div id="global-warning" class="notice">Bu sayfa araştırma ve risk değerlendirmesidir. Emir, kesin getiri veya gerçek yatırım hesabı değildir.</div>
+<section class="stats" aria-label="Araştırma özeti">
+ <article class="stat"><label>REFERANS SANAL KASA</label><strong id="stat-cash">₺150.000</strong><small>Gerçek yatırılmış bakiye değil</small></article>
+ <article class="stat"><label>KORUNAN REZERV</label><strong id="stat-reserve">₺60.000</strong><small>Varsayılan nakit rezervi</small></article>
+ <article class="stat"><label>HİPOTEZ RİSK LİMİTİ</label><strong id="stat-risk">₺375</strong><small>Referans kasanın %0,25'i</small></article>
+ <article class="stat"><label>BRÜT PAPER TAVANI</label><strong id="stat-gross">₺30.000</strong><small>Mevcut maruziyet: 0 TL</small></article>
+</section>
+<section id="motorlar" class="section">
+ <div class="section-head"><div><div class="kicker">01 / ARAŞTIRMA ALTYAPISI</div><h2>Üç motor. Tek risk disiplini.</h2></div><p>Veri kaynakları bağımsız; aynı varlığın riski ortak kasada tekrar sayılmaz.</p></div>
+ <div class="engine-grid">
+  <article class="engine"><div class="engine-head"><span class="engine-symbol">A</span><span class="engine-badge">3 STRATEJİ</span></div><h3>İstatistiksel göreli değer</h3><p>Pairs, ETF ve cointegration. Formation / doğrulama / dış örneklem ayrımı; short ve veri lisansı olmadan işlem uygunluğu yok.</p><div class="engine-foot"><span>HİSSE · ETF · SEPET</span><b class="muted-status">ARAŞTIRMA</b></div></article>
+  <article class="engine accent"><div class="engine-head"><span class="engine-symbol">B</span><span class="engine-badge">2 STRATEJİ</span></div><h3>Kripto farkları</h3><p>Gerçek funding olayları, interval karşılaştırması ve stablecoin L2 ekranı. Gözlem ile gerçekleşen nakit akışı ayrı tutulur.</p><div class="engine-foot"><span>BINANCE · OKX</span><b id="engine-b-status">VERİ BEKLENİYOR</b></div></article>
+  <article class="engine"><div class="engine-head"><span class="engine-symbol">C</span><span class="engine-badge">1 STRATEJİ</span></div><h3>Sabit getirili finansman</h3><p>Tahvil–repo. ISIN, dealer kotasyonu, haircut, duration ve fonlama erişimi olmadan yalnız araştırma ekranı.</p><div class="engine-foot"><span>TAHVİL · REPO</span><b class="muted-status">ERİŞİM YOK</b></div></article>
+ </div>
+</section>
+<section id="arastirma" class="section">
+ <div class="section-head"><div><div class="kicker">02 / PİYASA GÖZLEMLERİ</div><h2>Canlı kaynak, doğrulanmış durum.</h2></div><p>Yalnızca başarılı salt-okunur taramalar canlı veri olarak görünür.</p></div>
+ <div id="strategy-grid" class="strategy-grid" aria-label="Altı strateji"></div>
+ <div class="workspace">
+  <div class="workspace-header"><div><small>ALTI / ANALİZ KONSOLU</small><h3 id="workspace-title">Funding araştırması</h3></div><div id="workspace-mode" class="mode-label">READ-ONLY</div></div>
+  <div class="tabs" role="tablist" aria-label="Analiz modülü">
+   <button type="button" role="tab" data-tab="B1" aria-selected="true">B1 <span>Funding</span></button>
+   <button type="button" role="tab" data-tab="B2" aria-selected="false">B2 <span>Stablecoin</span></button>
+   <button type="button" role="tab" data-tab="A1" aria-selected="false">A1 <span>Pairs</span></button>
+   <button type="button" role="tab" data-tab="A2" aria-selected="false">A2 <span>ETF–ETF</span></button>
+   <button type="button" role="tab" data-tab="A3" aria-selected="false">A3 <span>Sepet</span></button>
+   <button type="button" role="tab" data-tab="T0" aria-selected="false">T0 <span>Tahvil–repo</span></button>
+  </div>
+  <div id="work-content" role="tabpanel" aria-live="polite"></div>
+ </div>
+</section>
+<section class="section risk-section">
+ <div class="section-head"><div><div class="kicker">03 / ORTAK RİSK MOTORU</div><h2>Koruma önce gelir.</h2></div><p>Altı hipotez aynı sermaye ve faktör maruziyetini paylaşır.</p></div>
+ <div class="risk-layout">
+  <div class="risk-card"><div class="risk-label">REFERANS KASA DAĞILIMI</div><div class="risk-bar"><span id="risk-protected" class="risk-reserve"></span><span class="risk-open"></span></div><div class="legend"><span><i class="legend-dot reserve"></i>Korunan rezerv <b id="legend-reserve">%40</b></span><span><i class="legend-dot open"></i>Araştırma alanı <b id="legend-open">%60</b></span></div><hr><div class="risk-list"><span>Paper pozisyon</span><strong>0</strong></div><div class="risk-list"><span>Doğrulanmış PnL</span><strong>HESAPLANAMAZ</strong></div><div class="risk-list"><span>FX eşleştirme</span><strong>VERİ OLMADAN KAPALI</strong></div></div>
+  <div class="gate-card"><div class="risk-label">İŞLEM UYGUNLUK KAPILARI</div><ul><li><span>✓</span><p>Canlı emir ve para aktarımı kodda kapalı</p></li><li><span>✓</span><p>Eski veya hatalı oran/birim karşılaştırması reddediliyor</p></li><li><span>—</span><p>Gerçek emir karşı tarafı, komisyon ve hedge erişimi doğrulanmadı</p></li><li><span>—</span><p>İleri paper dolumu için sonraki tarihli yürütülebilir kotasyon bulunmuyor</p></li><li><span>—</span><p>TRY / USD / USDT birleştirmesi için tarihli FX kotasyonu yok</p></li></ul><div class="gate-note">Bu sürümde gerçek işlem başlatılabilecek bir ekran, buton veya emir yolu bulunmaz.</div></div>
+ </div>
+</section>
+<section class="section" id="kayitlar"><div class="section-head"><div><div class="kicker">04 / DENETİM GÜNLÜĞÜ</div><h2>İzle. Ölç. Ele. Sakla.</h2></div><p>Reddedilenler de dahil; son 14 günlük gözlemlerden en güncel kayıtlar.</p></div>
+ <div class="log-meta"><div><strong id="log-total">0</strong><span> Görüntülenen kayıt</span></div><div class="filterbar"><button type="button" class="filter active" data-filter="ALL">Tümü</button><button type="button" class="filter" data-filter="WATCH_ONLY">İzle</button><button type="button" class="filter" data-filter="REJECTED">Reddedilen</button><button type="button" class="filter" data-filter="SOURCE_ERROR">Veri hatası</button></div></div>
+ <div class="log-wrap"><table><thead><tr><th>ZAMAN</th><th>MODEL</th><th>DURUM</th><th>VARLIK / KAYNAK</th><th>GEREKÇE</th></tr></thead><tbody id="log-rows"><tr><td colspan="5">İlk gerçek tarama bekleniyor.</td></tr></tbody></table></div>
+</section>
+</main>
+<footer><div class="footer-brand">ALTI <span>© 2026 · Independent Quant Research</span></div><div class="footer-links"><a target="_blank" rel="noopener" href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History">Binance API</a><a target="_blank" rel="noopener" href="https://www.okx.com/docs-v5/en/">OKX API</a><a href="#motorlar">Başa dön ↑</a></div><p>Bu platform yatırım tavsiyesi değildir. Referans kasa sanaldır; getiriler, gerçek emirler veya fon transferleri simüle edilerek üretilmemiştir.</p></footer>
+</div>
+</body></html>

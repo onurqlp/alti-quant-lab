@@ -1,0 +1,36 @@
+{
+  "product": "ALTI QUANT RESEARCH LAB",
+  "version": "1.0.0",
+  "generated_at_utc": null,
+  "last_successful_scan_utc": null,
+  "scan_id": null,
+  "scan_status": "NO_LIVE_SCAN_YET",
+  "mode": "UNVERIFIED_NO_LIVE_DATA",
+  "live_source_count": 0,
+  "live_orders_enabled": false,
+  "verified_real_pnl": null,
+  "paper_pnl": null,
+  "portfolio": {
+    "reference_capital_try": 150000,
+    "deposited_capital_try": null,
+    "protected_reserve_try": 60000,
+    "paper_hypothesis_risk_limit_try": 375,
+    "paper_gross_exposure_limit_try": 30000,
+    "paper_gross_exposure_current_try": 0
+  },
+  "strategies": [
+    {"id":"A1","title":"Hisse pairs trading","engine":"A","status":"NOT_CONNECTED","reason":"Hisse ve borrow erişimi doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false},
+    {"id":"A2","title":"ETF–ETF göreli değer","engine":"A","status":"NOT_CONNECTED","reason":"ETF ve short erişimi doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false},
+    {"id":"A3","title":"İstatistiksel sepet / cointegration","engine":"A","status":"NOT_CONNECTED","reason":"Johansen / OOS doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false},
+    {"id":"B1","title":"Perpetual funding interval farkı","engine":"B","status":"AWAITING_SCAN","reason":"İlk resmi API taraması bekleniyor","data_label":"NOT_CONNECTED","actionable":false},
+    {"id":"B2","title":"Stablecoin fiyat sapması","engine":"B","status":"AWAITING_SCAN","reason":"İki borsa emir defteri taraması bekleniyor","data_label":"NOT_CONNECTED","actionable":false},
+    {"id":"T0","title":"Tahvil–repo finansman farkı","engine":"C","status":"ACCESS_UNVERIFIED","reason":"Broker/dealer veri ve izinleri doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false}
+  ],
+  "funding_records": [],
+  "funding_comparisons": {},
+  "stablecoin": null,
+  "provider_health": [],
+  "errors": [],
+  "recent_observations": [],
+  "observation_counts": {}
+}
