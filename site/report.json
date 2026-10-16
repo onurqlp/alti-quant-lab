@@ -1,36 +1,489 @@
 {
   "product": "ALTI QUANT RESEARCH LAB",
   "version": "1.0.0",
-  "generated_at_utc": null,
-  "last_successful_scan_utc": null,
-  "scan_id": null,
-  "scan_status": "NO_LIVE_SCAN_YET",
-  "mode": "UNVERIFIED_NO_LIVE_DATA",
-  "live_source_count": 0,
+  "generated_at_utc": "2026-10-16T21:44:26Z",
+  "scan_id": "alti-20261016T2144Z",
+  "last_successful_scan_utc": "2026-10-16T21:44:26Z",
+  "scan_status": "PARTIAL_LIVE",
+  "mode": "READ_ONLY_LIVE",
+  "live_source_count": 2,
+  "notional_trade_access_verified": false,
   "live_orders_enabled": false,
   "verified_real_pnl": null,
   "paper_pnl": null,
+  "synthetic_data_in_report": false,
+  "market_hours": {
+    "crypto": "24/7 (scheduled public API snapshots)",
+    "equities": "NOT_CONNECTED",
+    "bonds_repo": "NOT_CONNECTED"
+  },
   "portfolio": {
     "reference_capital_try": 150000,
     "deposited_capital_try": null,
-    "protected_reserve_try": 60000,
-    "paper_hypothesis_risk_limit_try": 375,
-    "paper_gross_exposure_limit_try": 30000,
-    "paper_gross_exposure_current_try": 0
+    "protected_reserve_try": 60000.0,
+    "paper_hypothesis_risk_limit_try": 375.0,
+    "paper_gross_exposure_limit_try": 30000.0,
+    "paper_gross_exposure_current_try": 0,
+    "verified_pnl_try": null,
+    "forward_paper_pnl_try": null,
+    "paper_fills_count": 0,
+    "cash_buckets": {
+      "TRY": {
+        "reference_only_try": 150000
+      },
+      "USD": {
+        "balance": null
+      },
+      "USDT": {
+        "balance": null
+      }
+    },
+    "fx_netting": "BLOCKED_NO_TIMESTAMPED_FX",
+    "overlap_factor_check": "NOT_EVALUABLE_WITHOUT_POSITIONS",
+    "exposure_by_engine_try": {
+      "A": 0,
+      "B": 0,
+      "C": 0
+    },
+    "live_trading": "PERMANENTLY_DISABLED_IN_THIS_BUILD",
+    "paper_execution": "NO_FILL_WITHOUT_NEXT_EXECUTABLE_QUOTE"
   },
   "strategies": [
-    {"id":"A1","title":"Hisse pairs trading","engine":"A","status":"NOT_CONNECTED","reason":"Hisse ve borrow erişimi doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false},
-    {"id":"A2","title":"ETF–ETF göreli değer","engine":"A","status":"NOT_CONNECTED","reason":"ETF ve short erişimi doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false},
-    {"id":"A3","title":"İstatistiksel sepet / cointegration","engine":"A","status":"NOT_CONNECTED","reason":"Johansen / OOS doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false},
-    {"id":"B1","title":"Perpetual funding interval farkı","engine":"B","status":"AWAITING_SCAN","reason":"İlk resmi API taraması bekleniyor","data_label":"NOT_CONNECTED","actionable":false},
-    {"id":"B2","title":"Stablecoin fiyat sapması","engine":"B","status":"AWAITING_SCAN","reason":"İki borsa emir defteri taraması bekleniyor","data_label":"NOT_CONNECTED","actionable":false},
-    {"id":"T0","title":"Tahvil–repo finansman farkı","engine":"C","status":"ACCESS_UNVERIFIED","reason":"Broker/dealer veri ve izinleri doğrulanmadı","data_label":"NOT_CONNECTED","actionable":false}
+    {
+      "id": "A1",
+      "title": "Hisse pairs trading",
+      "engine": "A",
+      "status": "NOT_CONNECTED",
+      "reason": "Lisanslı, temettü/split düzeltilmiş hisse verisi ve borrow erişimi doğrulanmadı.",
+      "data_label": "NOT_CONNECTED",
+      "actionable": false,
+      "paper_status": "PAPER_NO_FILL",
+      "formation_window": null,
+      "oos_window": null,
+      "costs": {
+        "exchange_fee": null,
+        "spread": null,
+        "slippage": null,
+        "borrow_or_financing": null,
+        "hedge": null,
+        "total": null
+      },
+      "verified_pnl": null
+    },
+    {
+      "id": "A2",
+      "title": "ETF–ETF göreli değer",
+      "engine": "A",
+      "status": "NOT_CONNECTED",
+      "reason": "Dayanak endeks, kur, temettü, NAV ve short erişimi doğrulanmadı.",
+      "data_label": "NOT_CONNECTED",
+      "actionable": false,
+      "paper_status": "PAPER_NO_FILL",
+      "formation_window": null,
+      "oos_window": null,
+      "costs": {
+        "exchange_fee": null,
+        "spread": null,
+        "slippage": null,
+        "borrow_or_financing": null,
+        "hedge": null,
+        "total": null
+      },
+      "verified_pnl": null
+    },
+    {
+      "id": "A3",
+      "title": "İstatistiksel sepet / cointegration",
+      "engine": "A",
+      "status": "NOT_CONNECTED",
+      "reason": "Johansen rank, formation-OOS ve çok bacak short erişimi doğrulanmadı.",
+      "data_label": "NOT_CONNECTED",
+      "actionable": false,
+      "paper_status": "PAPER_NO_FILL",
+      "formation_window": null,
+      "oos_window": null,
+      "costs": {
+        "exchange_fee": null,
+        "spread": null,
+        "slippage": null,
+        "borrow_or_financing": null,
+        "hedge": null,
+        "total": null
+      },
+      "verified_pnl": null
+    },
+    {
+      "id": "B1",
+      "title": "Perpetual funding interval farkı",
+      "engine": "B",
+      "status": "WATCH_ONLY",
+      "reason": "Only realized event observations; trading eligibility/hedging/fees remain unverified",
+      "data_label": "READ_ONLY_LIVE",
+      "actionable": false,
+      "paper_status": "PAPER_NO_FILL",
+      "formation_window": null,
+      "oos_window": null,
+      "costs": {
+        "exchange_fee": null,
+        "spread": null,
+        "slippage": null,
+        "borrow_or_financing": null,
+        "hedge": null,
+        "total": null
+      },
+      "verified_pnl": null
+    },
+    {
+      "id": "B2",
+      "title": "Stablecoin fiyat sapması",
+      "engine": "B",
+      "status": "SOURCE_ERROR",
+      "reason": "No validated two-venue quote screen",
+      "data_label": "NOT_CONNECTED",
+      "actionable": false,
+      "paper_status": "PAPER_NO_FILL",
+      "formation_window": null,
+      "oos_window": null,
+      "costs": {
+        "exchange_fee": null,
+        "spread": null,
+        "slippage": null,
+        "borrow_or_financing": null,
+        "hedge": null,
+        "total": null
+      },
+      "verified_pnl": null
+    },
+    {
+      "id": "T0",
+      "title": "Tahvil–repo finansman farkı",
+      "engine": "C",
+      "status": "ACCESS_UNVERIFIED",
+      "reason": "ISIN, dirty price, duration, repo dealer/teminat verisi ve erişim doğrulanmadı.",
+      "data_label": "NOT_CONNECTED",
+      "actionable": false,
+      "paper_status": "PAPER_NO_FILL",
+      "formation_window": null,
+      "oos_window": null,
+      "costs": {
+        "exchange_fee": null,
+        "spread": null,
+        "slippage": null,
+        "borrow_or_financing": null,
+        "hedge": null,
+        "total": null
+      },
+      "verified_pnl": null
+    }
   ],
-  "funding_records": [],
-  "funding_comparisons": {},
+  "funding_records": [
+    {
+      "venue": "OKX",
+      "symbol": "BTCUSDT",
+      "instrument_class": "USDT_LINEAR_PERPETUAL",
+      "data_label": "READ_ONLY_LIVE",
+      "rate_unit": "SIGNED_FRACTION_PER_EVENT",
+      "last_realized_rate_fraction": 5.08434874148e-05,
+      "last_realized_time_utc": "2026-10-16T16:00:00Z",
+      "last_settlement_age_hours": 5.74,
+      "interval_hours": 8.0,
+      "interval_source": "VERIFIED_SETTLEMENT_HISTORY",
+      "next_funding_time_utc": "2026-10-17T00:00:00Z",
+      "indicative_rate_fraction": 0.0001,
+      "indicative_is_realized": false,
+      "daily_observed_run_rate_fraction": 0.0001525305,
+      "historical_events": [
+        {
+          "time_utc": "2026-10-13T00:00:00Z",
+          "rate_fraction": 2.35736131727e-05
+        },
+        {
+          "time_utc": "2026-10-13T08:00:00Z",
+          "rate_fraction": 3.95456528596e-05
+        },
+        {
+          "time_utc": "2026-10-13T16:00:00Z",
+          "rate_fraction": 4.84206016569e-05
+        },
+        {
+          "time_utc": "2026-10-14T00:00:00Z",
+          "rate_fraction": -3.0665006641e-05
+        },
+        {
+          "time_utc": "2026-10-14T08:00:00Z",
+          "rate_fraction": 6.30585898942e-05
+        },
+        {
+          "time_utc": "2026-10-14T16:00:00Z",
+          "rate_fraction": 7.10897488654e-05
+        },
+        {
+          "time_utc": "2026-10-15T00:00:00Z",
+          "rate_fraction": 3.63031762521e-05
+        },
+        {
+          "time_utc": "2026-10-15T08:00:00Z",
+          "rate_fraction": 5.29366889594e-05
+        },
+        {
+          "time_utc": "2026-10-15T16:00:00Z",
+          "rate_fraction": 2.57859748836e-05
+        },
+        {
+          "time_utc": "2026-10-16T00:00:00Z",
+          "rate_fraction": 4.30997818461e-05
+        },
+        {
+          "time_utc": "2026-10-16T08:00:00Z",
+          "rate_fraction": 0.0001
+        },
+        {
+          "time_utc": "2026-10-16T16:00:00Z",
+          "rate_fraction": 5.08434874148e-05
+        }
+      ],
+      "metadata": {
+        "base": "BTC",
+        "quote": "USDT",
+        "margin": "USDT",
+        "contract_multiplier": 0.01,
+        "contract_multiplier_unit": "BTC",
+        "next_after_upcoming_utc": "2026-10-17T08:00:00Z",
+        "exchange_timestamp_available": false,
+        "market_quote_age_seconds": null
+      },
+      "received_utc": "2026-10-16T21:44:26Z",
+      "source_url": "https://www.okx.com/docs-v5/en/",
+      "source_read_only": true,
+      "access_to_trading": "UNVERIFIED"
+    },
+    {
+      "venue": "OKX",
+      "symbol": "ETHUSDT",
+      "instrument_class": "USDT_LINEAR_PERPETUAL",
+      "data_label": "READ_ONLY_LIVE",
+      "rate_unit": "SIGNED_FRACTION_PER_EVENT",
+      "last_realized_rate_fraction": 2.20036825696e-05,
+      "last_realized_time_utc": "2026-10-16T16:00:00Z",
+      "last_settlement_age_hours": 5.74,
+      "interval_hours": 8.0,
+      "interval_source": "VERIFIED_SETTLEMENT_HISTORY",
+      "next_funding_time_utc": "2026-10-17T00:00:00Z",
+      "indicative_rate_fraction": 8.70776800008e-05,
+      "indicative_is_realized": false,
+      "daily_observed_run_rate_fraction": 6.6011e-05,
+      "historical_events": [
+        {
+          "time_utc": "2026-10-13T00:00:00Z",
+          "rate_fraction": 1.27789830111e-05
+        },
+        {
+          "time_utc": "2026-10-13T08:00:00Z",
+          "rate_fraction": 2.73840455112e-05
+        },
+        {
+          "time_utc": "2026-10-13T16:00:00Z",
+          "rate_fraction": -1.2289136517e-06
+        },
+        {
+          "time_utc": "2026-10-14T00:00:00Z",
+          "rate_fraction": 6.94489979454e-05
+        },
+        {
+          "time_utc": "2026-10-14T08:00:00Z",
+          "rate_fraction": 3.85061562109e-05
+        },
+        {
+          "time_utc": "2026-10-14T16:00:00Z",
+          "rate_fraction": 2.01852546988e-05
+        },
+        {
+          "time_utc": "2026-10-15T00:00:00Z",
+          "rate_fraction": 8.21396051471e-05
+        },
+        {
+          "time_utc": "2026-10-15T08:00:00Z",
+          "rate_fraction": 1.82885642341e-05
+        },
+        {
+          "time_utc": "2026-10-15T16:00:00Z",
+          "rate_fraction": 5.79154481483e-05
+        },
+        {
+          "time_utc": "2026-10-16T00:00:00Z",
+          "rate_fraction": 7.15293823197e-05
+        },
+        {
+          "time_utc": "2026-10-16T08:00:00Z",
+          "rate_fraction": 1.07226187845e-05
+        },
+        {
+          "time_utc": "2026-10-16T16:00:00Z",
+          "rate_fraction": 2.20036825696e-05
+        }
+      ],
+      "metadata": {
+        "base": "ETH",
+        "quote": "USDT",
+        "margin": "USDT",
+        "contract_multiplier": 0.1,
+        "contract_multiplier_unit": "ETH",
+        "next_after_upcoming_utc": "2026-10-17T08:00:00Z",
+        "exchange_timestamp_available": false,
+        "market_quote_age_seconds": null
+      },
+      "received_utc": "2026-10-16T21:44:26Z",
+      "source_url": "https://www.okx.com/docs-v5/en/",
+      "source_read_only": true,
+      "access_to_trading": "UNVERIFIED"
+    }
+  ],
+  "funding_comparisons": {
+    "BTCUSDT": {
+      "status": "NOT_COMPARABLE",
+      "reason": "Two validated venues required",
+      "run_rate_diff_fraction": null
+    },
+    "ETHUSDT": {
+      "status": "NOT_COMPARABLE",
+      "reason": "Two validated venues required",
+      "run_rate_diff_fraction": null
+    }
+  },
   "stablecoin": null,
-  "provider_health": [],
-  "errors": [],
-  "recent_observations": [],
-  "observation_counts": {}
+  "provider_health": [
+    {
+      "venue": "BINANCE",
+      "symbol": "BTCUSDT",
+      "status": "ACCESS_BLOCKED",
+      "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "received_utc": "2026-10-16T21:44:26Z"
+    },
+    {
+      "venue": "OKX",
+      "symbol": "BTCUSDT",
+      "status": "READ_ONLY_LIVE",
+      "message": "Historical event and contract metadata validated",
+      "received_utc": "2026-10-16T21:44:26Z"
+    },
+    {
+      "venue": "BINANCE",
+      "symbol": "ETHUSDT",
+      "status": "ACCESS_BLOCKED",
+      "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "received_utc": "2026-10-16T21:44:26Z"
+    },
+    {
+      "venue": "OKX",
+      "symbol": "ETHUSDT",
+      "status": "READ_ONLY_LIVE",
+      "message": "Historical event and contract metadata validated",
+      "received_utc": "2026-10-16T21:44:26Z"
+    }
+  ],
+  "errors": [
+    {
+      "venue": "BINANCE",
+      "symbol": "BTCUSDT",
+      "status": "ACCESS_BLOCKED",
+      "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "received_utc": "2026-10-16T21:44:26Z"
+    },
+    {
+      "venue": "BINANCE",
+      "symbol": "ETHUSDT",
+      "status": "ACCESS_BLOCKED",
+      "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "received_utc": "2026-10-16T21:44:26Z"
+    },
+    {
+      "venue": "BINANCE+OKX",
+      "symbol": "USDCUSDT",
+      "status": "ACCESS_BLOCKED",
+      "message": "HTTP 451 from https://fapi.binance.com/api/v3/depth"
+    }
+  ],
+  "recent_observations": [
+    {
+      "id": "f8f470c039d7bacdfba3",
+      "scan_id": "alti-20261016T2144Z",
+      "time_utc": "2026-10-16T21:44:27Z",
+      "strategy": "B2",
+      "kind": "SOURCE_ERROR",
+      "venue": null,
+      "symbol": "USDCUSDT",
+      "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/api/v3/depth",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
+    {
+      "id": "df535e4e0785886f029d",
+      "scan_id": "alti-20261016T2144Z",
+      "time_utc": "2026-10-16T21:44:27Z",
+      "strategy": "B1",
+      "kind": "REJECTED",
+      "venue": null,
+      "symbol": "ETHUSDT",
+      "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
+    {
+      "id": "008b75e890a57398ae89",
+      "scan_id": "alti-20261016T2144Z",
+      "time_utc": "2026-10-16T21:44:27Z",
+      "strategy": "B1",
+      "kind": "SOURCE_ERROR",
+      "venue": "BINANCE",
+      "symbol": "ETHUSDT",
+      "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
+    {
+      "id": "6b140042315469fba9a3",
+      "scan_id": "alti-20261016T2144Z",
+      "time_utc": "2026-10-16T21:44:27Z",
+      "strategy": "B1",
+      "kind": "REJECTED",
+      "venue": null,
+      "symbol": "BTCUSDT",
+      "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
+    {
+      "id": "f575ee68b4dc782e9a7d",
+      "scan_id": "alti-20261016T2144Z",
+      "time_utc": "2026-10-16T21:44:26Z",
+      "strategy": "B1",
+      "kind": "SOURCE_ERROR",
+      "venue": "BINANCE",
+      "symbol": "BTCUSDT",
+      "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    }
+  ],
+  "observation_counts": {
+    "WATCH_ONLY": 0,
+    "REJECTED": 2,
+    "SOURCE_ERROR": 3,
+    "PAPER_NO_FILL": 0
+  },
+  "warnings": [
+    "Market data is read-only public research, not an executable price/offer.",
+    "Funding differences are not guaranteed cashflows; basis/hedge/fees/borrow/settlement may dominate.",
+    "NO paper fill without a later executable source quote and explicit legal trading access.",
+    "Coin.Live is independent and untouched."
+  ],
+  "source_docs": {
+    "binance": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History",
+    "okx": "https://www.okx.com/docs-v5/en/"
+  }
 }
