@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08111b">
+<meta name="description" content="ALTI Quant Research Lab — altı strateji, üç motor ve sanal risk yönetimi için tamamen sentetik etkileşimli araştırma demosu.">
+<title>ALTI LAB — Etkileşimli Demo V2</title>
+<link rel="stylesheet" href="demo.css">
+<script defer src="demo.js"></script>
+</head>
+<body>
+<div class="demo-ribbon" role="status"><span class="ribbon-light"></span> DEMO V2 <span class="ribbon-dot">•</span> TÜM SAYISAL PİYASA ÖRNEKLERİ SENTETİKTİR <span class="ribbon-dot">•</span> EMİR VE GERÇEK BAKİYE YOK</div>
+<div class="shell">
+<header class="bar">
+  <a class="identity" href="../" aria-label="ALTI canlı araştırma ekranına git"><div class="brandmark">A<span>·</span></div><span><strong>ALTI<span class="trademark">/</span>LAB</strong><small>QUANT RESEARCH ENVIRONMENT</small></span></a>
+  <nav class="nav"><a href="#stratejiler">Stratejiler</a><a href="#kasa">Sanal kasa</a><a href="#gunluk">Araştırma günlüğü</a></nav>
+  <a class="live-link" href="../"><span class="led"></span> Gerçek veri ekranı <span aria-hidden="true">↗</span></a>
+</header>
+<main>
+  <section class="hero">
+    <div class="intro"><div class="eyebrow"><span class="crosshair">⊞</span> ARAŞTIRMA TERMİNALİ <span class="muted">/ SÜRÜM 02</span></div>
+      <h1>Altı hipotez.<br><span>Tek karar disiplini.</span></h1>
+      <p>Finansman farkı, istatistiksel göreli değer ve kripto piyasası sapmalarını aynı risk kasasında değerlendir. Bu sürümde her grafik ve piyasa fiyatı yalnızca <b>eğitim amaçlı, sentetik senaryodur.</b></p>
+      <div class="hero-actions"><a class="primary-btn" href="#stratejiler">Modelleri incele <span>↘</span></a><a class="secondary-btn" href="../">Gerçek, salt-okunur görünüm ↗</a></div>
+      <div class="proof"><span>◉ 6 / 6 DEMO MODEL</span><span>◈ 3 AYRI MOTOR</span><span>⊘ OTOMATİK EMİR YOK</span></div>
+    </div>
+    <div class="hero-visual" aria-label="Üç araştırma motorunun sentetik risk mimarisi">
+      <div class="visual-top"><span>RESEARCH NETWORK</span><span class="synthetic-tag">SYNTHETIC</span></div>
+      <div class="network"><div class="node node-a"><span>A</span><small>İSTATİSTİKSEL</small></div><div class="node node-b"><span>B</span><small>KRİPTO</small></div><div class="node node-c"><span>C</span><small>FİNANSMAN</small></div><div class="node-centre"><div class="ring1"></div><div class="ring2"></div><strong>₺150K</strong><small>SANAL RİSK</small></div><svg class="network-paths" viewBox="0 0 420 275" preserveAspectRatio="none" aria-hidden="true"><path d="M112 75 L210 137 L308 75"/><path d="M210 137 L210 227"/></svg></div>
+      <div class="visual-bottom"><div><small>ORTAK KASA</small><b>Risk-first</b></div><div><small>MODEL DURUMU</small><b>İzle / Ele / Sakla</b></div></div>
+    </div>
+  </section>
+  <section class="metric-row" aria-label="Demo kasa ve risk sınırları">
+    <article class="metric"><div class="metric-head"><span>REFERANS SERMAYE</span><span class="mini-icon">◈</span></div><strong id="topCapital">₺150.000</strong><small>Gerçek yatırım bakiyesi değil</small></article>
+    <article class="metric"><div class="metric-head"><span>REZERV / NAKİT</span><span class="mini-icon">▦</span></div><strong id="topReserve">₺60.000</strong><small id="reserveDesc">%40 koruma varsayımı</small></article>
+    <article class="metric"><div class="metric-head"><span>TEK HİPOTEZ RİSKİ</span><span class="mini-icon">⛨</span></div><strong id="topRisk">₺375</strong><small id="riskDesc">Kasanın %0,25'i</small></article>
+    <article class="metric"><div class="metric-head"><span>PAPER BRÜT LİMİT</span><span class="mini-icon">◎</span></div><strong id="topGross">₺30.000</strong><small>Gerçek pozisyon: 0</small></article>
+  </section>
+  <section id="stratejiler" class="section" aria-labelledby="strategiesHeading">
+    <div class="section-heading"><div><span class="section-index">01 / MODEL LABORATUVARI</span><h2 id="strategiesHeading">Neyi araştırıyoruz?</h2><p>Stratejiyi seç; grafiği, maliyetleri, gözlem gerekçesini ve açılmama nedenini incele.</p></div><div class="data-stamp"><span>●</span> MODE: FULL SYNTHETIC<br><small>Yayınlanmış fiyat verisi kullanılmaz</small></div></div>
+    <div class="toolbar" role="group" aria-label="Araştırma motoru filtresi"><div class="segmented" id="engineFilters"><button type="button" data-engine="ALL" class="selected" aria-pressed="true">Tümü <small>6</small></button><button type="button" data-engine="A" aria-pressed="false">Motor A <small>3</small></button><button type="button" data-engine="B" aria-pressed="false">Motor B <small>2</small></button><button type="button" data-engine="C" aria-pressed="false">Motor C <small>1</small></button></div><div class="filter-explain">İllüstratif tarama evreni · 6 stratejiden fazlası yok</div></div>
+    <div id="strategyCards" class="strategy-cards" role="group" aria-label="Strateji kartları"></div>
+    <div class="terminal" id="terminal" aria-live="polite">
+      <div class="terminal-top"><div><span class="terminal-eyebrow" id="terminalEngine">MOTOR B / KRİPTO FARKLARI</span><h3 id="terminalTitle">Funding aralığı</h3><p id="terminalBlurb">Olay bazlı fonlama akışları ve eşlenebilirlik.</p></div><div class="status-stack"><span id="terminalTag" class="pill demo">SYNTHETIC · DEMO</span><span id="terminalVerdict" class="verdict">WATCH_ONLY</span></div></div>
+      <div class="terminal-body"><div class="analysis-main"><div class="plot-shell"><div class="plot-head"><div><small id="plotEyebrow">MODEL 01 · İLLÜSTRATİF</small><h4 id="plotTitle">Fonlama olayları</h4></div><div class="plot-controls" id="chartTabs" role="group" aria-label="Grafik görünümü"><button type="button" class="selected" data-chart="primary" aria-pressed="true">Fiyat / oran</button><button type="button" data-chart="secondary" aria-pressed="false">Artık / fark</button></div></div><div id="plotLegend" class="plot-legend"></div><div id="chart" class="svg-area"></div><div id="plotNote" class="chart-note">Sentetik senaryo; gerçek tarihsel veri değildir.</div></div><div id="instrumentMetrics" class="mini-metrics"></div><div class="subpanels"><article class="subpanel"><div class="subpanel-label">MODELİN ARADIĞI</div><p id="modelRationale"></p></article><article class="subpanel"><div class="subpanel-label">AÇILMAMA GEREKÇESİ</div><p id="modelBlockers"></p></article></div></div><aside class="analysis-aside"><div class="aside-block"><div class="aside-title">Araştırma sözleşmesi <span class="tag-muted">DEMO</span></div><dl id="detailFields"></dl></div><div class="aside-block"><div class="aside-title">Maliyet ve sürtünme</div><div id="costLines"></div><label class="range-label" for="friction">Örnek ek sürtünme <b id="frictionValue">12 bps</b></label><input id="friction" type="range" min="0" max="35" step="1" value="12"><div class="range-foot"><span>0 bps</span><span>35 bps</span></div><div id="impactBox" class="impact-box"></div></div><div class="aside-bottom"><span>RISK ENGINE</span><b>Emir kapalı <span>⊘</span></b><p>Gözlem bir emir önerisi ya da gerçekleşmiş kâr değildir.</p></div></aside></div>
+    </div>
+  </section>
+  <section id="kasa" class="section"><div class="section-heading"><div><span class="section-index">02 / ORTAK RİSK ÜST KATMANI</span><h2>Tek kasa. Çifte risk yok.</h2><p>Üç motorun risk limitleri paylaşılır; burada yaptığın değişiklikler yalnızca bu tarayıcıdaki demo varsayımlarını etkiler.</p></div><span class="section-capsule">GERÇEK POZİSYON: 0</span></div>
+    <div class="portfolio-grid"><div class="card portfolio-main"><div class="card-title"><span>REFERANS KASA DAĞILIMI</span><span class="synthetic-tag">SANAL</span></div><div class="allocation"><div><small>Korunan rezerv</small><strong id="reserveMoney">₺60.000</strong></div><div class="right"><small>Araştırmaya açık (kasa varsayımı)</small><strong id="availableMoney">₺90.000</strong></div></div><div class="allocation-bar"><div id="reserveBar"></div><div id="freeBar"></div></div><div class="bar-labels"><span><i class="dot turquoise"></i> Korumalı</span><span><i class="dot indigo"></i> Açık alan</span></div><div class="risk-controls"><div><label for="reserveSlider">Rezerv yüzdesi <strong id="reservePct">%40</strong></label><input type="range" id="reserveSlider" min="20" max="80" step="5" value="40"></div><div><label for="riskSlider">Hipotez başına risk <strong id="riskPct">%0,25</strong></label><input type="range" id="riskSlider" min="5" max="100" step="5" value="25"></div></div><p class="subtext">Risk limitleri yatırılmamış referans para üzerinden hesaplanır. Bu demo hiçbir hesaba, cüzdana veya emir API'sine bağlı değildir.</p></div>
+    <div class="card exposure"><div class="card-title">MOTOR RİSK PAYI <span>temsili senaryo</span></div><div id="engineExposure"></div><div class="divider"></div><div class="allocation-sum"><span>İzin verilebilecek azami brüt paper maruziyet</span><strong id="maxExposure">₺30.000</strong></div><div class="stop-line">⛨ <span>Örtüşen varlık, hedge ve finansman riski ayrı portföylere bölünerek çoğaltılmaz.</span></div></div></div>
+  </section>
+  <section id="gunluk" class="section"><div class="section-heading"><div><span class="section-index">03 / GÖZLEM HAFIZASI</span><h2>Sinyaller kadar reddedilenler de önemli.</h2><p>Aşağıdaki günlük gerçek tarama kaydı değildir. İzleme, ret ve veri hatası aşamaları öğretici amaçla modellenmiştir.</p></div><span class="section-capsule">GÖZLEM KAYNAĞI: SYNTHETIC</span></div>
+    <div class="journal card"><div class="journal-head"><div class="journal-metrics"><div><strong id="journalTotal">0</strong><small>Örnek olay</small></div><div><strong id="journalRejected">0</strong><small>Ret / engel</small></div><div><strong>0</strong><small>Gerçek paper fill</small></div></div><div class="journal-controls"><div class="mini-segment" id="periodFilters" role="group" aria-label="Örnek gözlem dönemi"><button data-period="7" type="button" aria-pressed="false">7G</button><button data-period="14" type="button" aria-pressed="true" class="selected">14G</button><button data-period="30" type="button" aria-pressed="false">30G</button></div><select id="statusFilter" aria-label="Gözlem durumu"><option value="ALL">Tüm durumlar</option><option value="WATCH_ONLY">İzle</option><option value="REJECTED">Reddedilen</option><option value="SOURCE_ERROR">Veri hatası</option><option value="PAPER_NO_FILL">İleri sanal bekliyor</option></select></div></div><div class="table-wrap"><table><thead><tr><th>ÖRNEK GÜN</th><th>MODEL</th><th>GÖZLEM</th><th>DURUM</th><th>ARAŞTIRMA NOTU</th></tr></thead><tbody id="journalBody"></tbody></table></div><div class="journal-footer"><span id="journalCaption"></span><span>REALIZED PnL: UNKNOWN · PAPER FILL: 0</span></div></div>
+  </section>
+  <section class="endnote"><span>ALTI / MODEL INTEGRITY</span><h2>Görünür fırsat, doğrulanmış getiri değildir.</h2><p>Bu interaktif demo piyasa akışlarını, temel istatistikleri ve risk kontrollerini anlatır. Gerçek sistemde veri kaynağı, kotasyon zamanı, işlem hakkı, maliyet ve ileri dönem kayıtları doğrulanmadan hiçbir sinyal işlem olarak değerlendirilmez.</p><a href="../">Gerçek veri ekranına dön ↗</a></section>
+</main>
+<footer><div><strong>ALTI<span>·</span>LAB</strong><small>Quant Research Lab · DEMO V2</small></div><p>Altı stratejinin sınırları dışına çıkılmaz. Tüm demo fiyatları, oranları ve günlük olayları sentetiktir. Yatırım tavsiyesi değildir.</p><a href="https://github.com/onurqlp/alti-quant-lab" target="_blank" rel="noopener">SOURCE CODE ↗</a></footer>
+</div>
+</body>
+</html>

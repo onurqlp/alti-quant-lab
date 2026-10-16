@@ -64,3 +64,10 @@ git push -u origin main
 `alti/adapters.py` Binance/OKX B1; `alti/stablecoin.py` B2; `alti/risk.py` ortak paper budget; `alti/worker.py` scan/audit/snapshot; `site/` gerçek gösterim; `config/` araştırma varsayımları; `docs/VERI_VE_ERISIM_MATRISI.md` araştırma kaynakları; `legacy/` **sentetik orijinal demo** korunur, gerçek rapora hiç import edilmez.
 
 **Eldeki kanıt sınırı:** 4 yerel smoke = PASS (adapter mock veriyle); gerçek borsa ağı = bu container'da UNREACHABLE; GitHub Actions CI = çalıştırılmadı; Pages deploy = yapılmadı; gerçek/forward PnL = NULL. Bu durum gerçek işlem tavsiyesi değildir.
+
+
+## Etkileşimli sentetik Demo V2
+
+Ayrı sayfa: `https://onurqlp.github.io/alti-quant-lab/demo/` (`site/demo/`). Bu sayfada A1, A2, A3, B1, B2 ve T0 için tamamen **SYNTHETIC** örnek dizileri, maliyet sürtünmesi ve tek-kasa risk kaydırıcıları, 7/14/30 günlük örnek gözlem günlüğü ve mobil uyumlu grafikler yer alır. Demo, `report.json` okumaz ve hiçbir piyasa API'sine veya trade endpoint'ine istek yapmaz. Sentetik içerik gerçek geçmişi, ileri paper performansını, garanti getiri veya broker erişimini temsil etmez. Gerçek read-only panel ana dizinde korunur.
+
+Demo-only görünüm değişiklikleri `git commit -m "... [demo-only]"` ile yayınlanır. Bu özel push için `scan` işi (ve içindeki testler) **çalıştırılmaz**; sadece GitHub Pages işi çalışır. Normal zamanlanmış salt-okunur veri taramaları değiştirilmemiştir.
