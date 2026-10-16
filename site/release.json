@@ -1,0 +1,44 @@
+{
+  "schema": "alti-site-release-v1",
+  "product_version": "1.0.0",
+  "product_version_source": "config/research_config.json:version (1.0.0-read-only-mvp)",
+  "version_policy": "USER_APPROVAL_REQUIRED",
+  "version_changed_this_update": false,
+  "proposed_next_version": "3.0.0",
+  "proposed_next_version_status": "RECOMMENDATION_ONLY_NOT_APPROVED",
+  "site_last_updated_date_tr": "2026-10-17",
+  "site_update_id": "UI-20261017-01",
+  "manual_research_last_completed_at_utc": null,
+  "manual_research_next_action": "User says ALTI sistemini güncelle; research since previous documented decision checkpoint, do not backdate decisions.",
+  "published_change_log": [
+    {
+      "update_id": "UI-20261017-01",
+      "date": "2026-10-17",
+      "product_version": "1.0.0",
+      "kind": "SITE_UX",
+      "summary": "Basit karar masası, 6 strateji işlem rehberi, AUTO/SELECT açıklaması, tarihli sürüm ve manuel güncelleme günlüğü",
+      "data_research_performed": false,
+      "version_changed": false
+    },
+    {
+      "update_id": "UI-20261016-02",
+      "date": "2026-10-16",
+      "product_version": "1.0.0",
+      "kind": "DEMO_ONLY",
+      "summary": "İzole sentetik Demo V2 yayınlandı",
+      "data_research_performed": false,
+      "version_changed": false
+    },
+    {
+      "update_id": "CORE-20261016-01",
+      "date": "2026-10-16",
+      "product_version": "1.0.0",
+      "kind": "INITIAL_LAUNCH",
+      "summary": "Salt-okunur piyasa verisi altyapısı ve ilk GitHub Pages yayını",
+      "data_research_performed": false,
+      "version_changed": false
+    }
+  ],
+  "data_update_policy": "Piyasa raporunun generated_at_utc alanı site sürümünden ve manuel araştırma tarihinden bağımsızdır.",
+  "disclaimer": "İşlem ve sonuçlar yalnızca kaynaklara dayalı araştırmadır; ilk andan itibaren ileri paper işlem kaydı yoktur."
+}

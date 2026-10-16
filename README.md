@@ -1,6 +1,6 @@
 # ALTI Quant Research Lab
 
-**Durum: Yayına hazır kaynak kodlu salt-okunur araştırma MVP'si; canlı veri ve GitHub Pages yayını henüz bu ortamda doğrulanmadı.** `COIN.LIVE` veya başka repodan tek satır alınmamış veya değiştirilmemiştir. Proje benzersiz `alti-quant-lab` repo ismine tasarlanmıştır.
+**Durum: GitHub Pages üzerinde yayınlanan salt-okunur ALTI araştırma sitesi; veri kalitesi her kaynak için ayrı kontrol edilmelidir.** `COIN.LIVE` veya başka repodan tek satır alınmamış veya değiştirilmemiştir. Proje benzersiz `alti-quant-lab` repo ismine tasarlanmıştır.
 
 ## Ne var?
 
@@ -71,3 +71,10 @@ git push -u origin main
 Ayrı sayfa: `https://onurqlp.github.io/alti-quant-lab/demo/` (`site/demo/`). Bu sayfada A1, A2, A3, B1, B2 ve T0 için tamamen **SYNTHETIC** örnek dizileri, maliyet sürtünmesi ve tek-kasa risk kaydırıcıları, 7/14/30 günlük örnek gözlem günlüğü ve mobil uyumlu grafikler yer alır. Demo, `report.json` okumaz ve hiçbir piyasa API'sine veya trade endpoint'ine istek yapmaz. Sentetik içerik gerçek geçmişi, ileri paper performansını, garanti getiri veya broker erişimini temsil etmez. Gerçek read-only panel ana dizinde korunur.
 
 Demo-only görünüm değişiklikleri `git commit -m "... [demo-only]"` ile yayınlanır. Bu özel push için `scan` işi (ve içindeki testler) **çalıştırılmaz**; sadece GitHub Pages işi çalışır. Normal zamanlanmış salt-okunur veri taramaları değiştirilmemiştir.
+
+
+## Basit karar masası ve kullanıcı kontrollü sürüm (17 Ekim 2026)
+
+Ana sayfa `site/index.html` artık **önce bugün ne yapıyoruz, sonra altı strateji ve açıklamaları, ardından AUTO/SELECT sanal kasaları ve sürüm geçmişi** gösterir. Derin teknik arayüz kaldırılmadı, sayfanın devamındadır. Yeni başlangıç rehberi `site/guide.js`, tarihi ve sürümü `site/release.json` kaynaklıdır. Site güncelleme kimliği **UI-20261017-01**. Ürün sürümü kullanıcı talebi uyarınca **1.0.0** kalmıştır. Bir sonraki ürün sürümü 3.0.0 öneridir, onaylanmamıştır.
+
+**Kaydedilen zamanlar birbirinden ayrıdır:** son yayınlanan site değişikliği, son tamamlanmış manuel analiz, son otomatik salt-okunur market feed. Henüz hiçbir tarihli ileri paper işlem yoktur; getiriler hesaplanamaz. Tüm değişiklik sözleşmesi `docs/V3_SURUM_VE_MANUEL_GUNCELLEME.md`.

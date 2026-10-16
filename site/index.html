@@ -3,22 +3,82 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b1424">
+<meta name="color-scheme" content="dark">
 <meta name="description" content="ALTI Quant Research Lab — altı strateji, üç bağımsız araştırma motoru, ortak risk ve salt okunur piyasa analizi.">
 <title>ALTI — Quant Research Lab</title>
 <link rel="stylesheet" href="styles.css">
 <script defer src="app.js"></script>
+<script defer src="guide.js"></script>
 </head>
 <body>
 <div class="app">
 <header class="topbar">
   <div class="brand"><span class="brandmark">A<span>·</span></span><div><strong>ALTI</strong><small>QUANT RESEARCH LAB</small></div></div>
-  <nav aria-label="Sayfa bölümleri" class="toplinks"><a href="demo/" style="color:#78dfc2;font-weight:850">◈ Demo V2</a><a href="#motorlar">Motorlar</a><a href="#arastirma">Analiz</a><a href="#kayitlar">Gözlemler</a></nav>
+  <nav aria-label="Sayfa bölümleri" class="toplinks"><a href="#bugun">Bugün</a><a href="#firsatlar">Stratejiler</a><a href="#surum">Güncellemeler</a><a href="demo/">Demo V2 ↗</a></nav>
   <div class="topend"><span id="top-signal" class="live-dot">Veri bekleniyor</span><button type="button" class="refresh" id="refresh" title="Yayımlanmış son veriyi yeniden yükle">↻ <span>Veriyi yenile</span></button></div>
 </header>
 <main>
+<section id="bugun" class="simple-dashboard" aria-labelledby="simple-title">
+ <div class="simple-topline"><span class="simple-eyebrow">ALTI / KARAR MASASI</span><span class="simple-version" id="quick-version">Sürüm: Yükleniyor…</span></div>
+ <div class="simple-grid">
+  <div class="simple-main-card">
+   <div class="simple-now-title"><span class="now-dot" aria-hidden="true"></span> ŞU AN NE YAPMALIYIZ?</div>
+   <h1 id="simple-title">Şimdilik bekliyoruz.</h1>
+   <p class="simple-lead" id="simple-description">Altı stratejiyi inceliyoruz. Doğrulanmış yeni giriş ve çıkış koşulları kaydedilmeden sanal işlem açmıyoruz.</p>
+   <div class="simple-actions"><a class="simple-primary" href="#firsatlar">6 stratejiyi gör <span aria-hidden="true">↘</span></a><a class="simple-secondary" href="#yapilacaklar">Ne yapacağız?</a></div>
+   <div class="simple-caution" role="status"><b>Gerçek işlem yok.</b> Burası sanal karar ve araştırma sistemidir. Kaynak verisi almak, alım-satım fırsatının doğrulandığı anlamına gelmez.</div>
+  </div>
+  <aside class="simple-side-card" aria-label="Güncelleme ve veri bilgisi">
+   <div class="side-heading">SİSTEMİN DURUMU <span class="mini-info">ⓘ</span></div>
+   <div class="meta-row"><span>Ürün sürümü</span><strong id="system-version">1.0.0</strong></div>
+   <div class="meta-row"><span>Son site güncellemesi</span><strong id="site-updated">—</strong></div>
+   <div class="meta-row"><span>Son manuel araştırma</span><strong id="research-updated">Henüz yok</strong></div>
+   <div class="meta-row"><span>Son piyasa verisi</span><strong id="feed-updated">—</strong></div>
+   <div class="meta-row"><span>Bir sonraki sürüm</span><strong id="next-version">Onay bekliyor</strong></div>
+   <p class="simple-note">Sürümü yalnız sen değiştirirsin. Veri taraması sürümü yükseltmez.</p>
+   <a class="minor-link" href="#surum">Ne zaman ne değişti? →</a>
+  </aside>
+ </div>
+ <div class="simple-alert" id="data-simple-alert" role="status"><span class="alert-icon">i</span><span>Raporun veri kalitesi ve son güncelleme tarihi kontrol ediliyor. Yalnız tarihli, doğrulanmış kararlar işlem listesine girer.</span></div>
+</section>
+<section class="simple-section" id="yapilacaklar" aria-labelledby="how-title">
+ <div class="simple-section-head"><div><span class="simple-index">01 / KISA YOL</span><h2 id="how-title">ALTI ile ne yapıyoruz?</h2><p>Üç adım. Ayrıntılarını bilmeden de ekranı okuyabilirsin.</p></div></div>
+ <div class="step-grid">
+  <article class="step-card"><span class="step-no">01</span><h3>Önce fırsat bul</h3><p>Altı stratejinin gerçek verilerini inceliyoruz. Şartlar eksikse <b>BEKLE</b> yazıyoruz.</p></article>
+  <article class="step-card"><span class="step-no">02</span><h3>Nasıl yapılacağını öğren</h3><p>Hangi varlık, hangi piyasa, hangi yön, kaç TL, ne zaman giriş ve hangi koşulda çıkış — hepsi ayrı ayrı yazılır.</p></article>
+  <article class="step-card"><span class="step-no">03</span><h3>Sonra sonucu ölç</h3><p>Önceki karar değişmez. Bir sonraki manuel araştırmada gerçekten ne olduğunu ve nedenini kaydederiz.</p></article>
+ </div>
+</section>
+<section class="simple-section" id="firsatlar" aria-labelledby="op-title">
+ <div class="simple-section-head"><div><span class="simple-index">02 / NE ALINIR, NE SATILIR?</span><h2 id="op-title">Altı strateji, basit anlatım.</h2><p>Bir stratejiye dokun; neyi nereden araştırdığımızı, ne zaman açılıp kapanabileceğini ve riskini öğren.</p></div><a class="simple-text-link" href="#arastirma">Tüm teknik verilere git ↗</a></div>
+ <div class="guide-grid" id="guide-grid" aria-label="Altı stratejiyi seç"></div>
+ <article class="guide-detail" id="guide-detail" aria-live="polite" aria-label="Seçili strateji açıklaması"></article>
+</section>
+<section class="simple-section" id="portfoyler" aria-labelledby="dual-title">
+ <div class="simple-section-head"><div><span class="simple-index">03 / SANAL İŞLEM TAKİBİ</span><h2 id="dual-title">İki ayrı sanal kasa.</h2><p>Modelin kendi kuralları ile bizim onayladığımız kararların sonuçlarını ayrı takip edeceğiz.</p></div></div>
+ <div class="dual-grid">
+  <article class="dual-card"><div class="dual-header"><span class="dual-kicker">A / OTOMATİK KURAL</span><span class="dual-pill">AUTO</span></div><h3>Sistem ne yapardı?</h3><strong class="dual-money">150.000 ₺</strong><p>Referans sanal sermaye. Henüz tarihli ve doğrulanmış sanal pozisyon yok.</p><div class="dual-line"><span>Açılmış işlem</span><b>0 doğrulanmış</b></div><div class="dual-line"><span>Net performans</span><b>Henüz hesaplanamaz</b></div></article>
+  <article class="dual-card"><div class="dual-header"><span class="dual-kicker">B / SEÇİLMİŞ KARAR</span><span class="dual-pill">SELECT</span></div><h3>Biz ne seçtik?</h3><strong class="dual-money">150.000 ₺</strong><p>Bağımsız karşılaştırma kasası. Onaylanmış, tarihli yeni karar bulunmuyor.</p><div class="dual-line"><span>Açılmış işlem</span><b>0 doğrulanmış</b></div><div class="dual-line"><span>Net performans</span><b>Henüz hesaplanamaz</b></div></article>
+ </div>
+ <p class="simple-footnote"><b>İki kasa toplam 300.000 TL yatırım değildir.</b> Aynı 150.000 TL referansla iki farklı karar yöntemini kıyaslarız. Simülasyon için doğrulanmış giriş/çıkış verisi gelmeden kâr yazmayız.</p>
+</section>
+<section class="simple-section" aria-labelledby="terms-title">
+ <div class="simple-section-head"><div><span class="simple-index">04 / BİLMEN GEREKENLER</span><h2 id="terms-title">Bir terimi bilmiyor musun?</h2><p>Dokun, en kısa hâliyle öğren. Grafik okumayı bilmen gerekmiyor.</p></div></div>
+ <div class="glossary" id="glossary"></div>
+</section>
+<section class="simple-section release-section" id="surum" aria-labelledby="release-title">
+ <div class="simple-section-head"><div><span class="simple-index">05 / SÜRÜM VE TARİH</span><h2 id="release-title">En son ne zaman neler yaptık?</h2><p>Sürüm numarası senden onay gelene kadar sabit; her yayın ayrı tarihle kaydedilir.</p></div></div>
+ <div class="release-grid">
+  <article class="release-current"><div class="release-head"><span>YAYINDAKİ ÜRÜN SÜRÜMÜ</span><span class="lock-label">🔒 SEN DEĞİŞTİRİRSİN</span></div><div id="release-number" class="release-number">1.0.0</div><div id="release-date" class="release-date">17 Ekim 2026 · site güncellemesi</div><p id="release-message">Arayüz sadeleştirildi; ürün sürümü otomatik yükseltilmedi.</p><div class="recommendation"><span>ÖNERDİĞİM SONRAKİ SÜRÜM</span><strong id="release-proposal">Onaylanmadı</strong><p>Öneri sürümü otomatik etkinleştirmez.</p></div></article>
+  <article class="release-history"><h3>Güncelleme geçmişi</h3><p class="tiny-simple">Her değişiklik tarih ve kayıt numarasıyla saklanır. Piyasa veri taraması, site güncellemesinden ayrı bir olaydır.</p><ol id="release-list" class="release-list"><li>Güncelleme kayıtları yükleniyor…</li></ol></article>
+ </div>
+ <div class="manual-command"><div><b>Bir dahaki sefer ne yazacaksın?</b><p>“ALTI sistemini güncelle.” Son kayıttan sonraki gerçek piyasa verilerini araştırır, önceki kararların ne olduğunu inceler ve yeni tarihli raporu yayımlarız.</p><small>Yeni sürüm numarasını yalnız sen açıkça onayladığında değiştiririz.</small></div><button type="button" id="copy-command" class="simple-secondary">Güncelleme komutunu kopyala</button></div>
+</section>
+<div class="advanced-divider" id="teknik"><span>↓ DETAYLI ANALİZ VE HAM KAYNAKLAR ↓</span><p>Aşağıdan sonrası uzman görünümü. İstemezsen bu bölüme bakmana gerek yok.</p></div>
+
 <section class="hero">
   <div class="hero-left">
-   <span class="eyebrow"><span class="micro-dot"></span> ANALYTICS / RESEARCH TERMINAL <span class="slash">/</span> v1.0</span>
+   <span class="eyebrow"><span class="micro-dot"></span> ANALYTICS / RESEARCH TERMINAL <span class="slash">/</span> <span id="hero-product-version">1.0.0</span></span>
    <h1>Fırsatı tahmin etme.<br><em>Veriyle doğrula.</em></h1>
    <p class="lead">Altı strateji. Üç bağımsız araştırma motoru. Tek sanal risk kasası. Net avantajı kanıtlayamayan gözlemler elenir.</p>
    <div class="hero-tags"><a href="demo/" class="demo-v2-link" aria-label="Etkileşimli sentetik Demo V2'yi aç">◈ ETKİLEŞİMLİ DEMO V2 ↗</a><span>◈ READ-ONLY</span><span>◌ EMİR YOK</span><span>◎ UTC VERİ DOĞRULAMA</span></div>
@@ -75,6 +135,7 @@
  <div class="log-wrap"><table><thead><tr><th>ZAMAN</th><th>MODEL</th><th>DURUM</th><th>VARLIK / KAYNAK</th><th>GEREKÇE</th></tr></thead><tbody id="log-rows"><tr><td colspan="5">İlk gerçek tarama bekleniyor.</td></tr></tbody></table></div>
 </section>
 </main>
-<footer><div class="footer-brand">ALTI <span>© 2026 · Independent Quant Research</span></div><div class="footer-links"><a target="_blank" rel="noopener" href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History">Binance API</a><a target="_blank" rel="noopener" href="https://www.okx.com/docs-v5/en/">OKX API</a><a href="#motorlar">Başa dön ↑</a></div><p>Bu platform yatırım tavsiyesi değildir. Referans kasa sanaldır; getiriler, gerçek emirler veya fon transferleri simüle edilerek üretilmemiştir.</p></footer>
+<footer><div class="footer-brand">ALTI <span>© 2026 · Independent Quant Research</span></div><div class="footer-links"><a href="#surum">Sürüm ve tarih</a><a target="_blank" rel="noopener" href="https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History">Binance API</a><a target="_blank" rel="noopener" href="https://www.okx.com/docs-v5/en/">OKX API</a><a href="#motorlar">Başa dön ↑</a></div><p>Bu platform yatırım tavsiyesi değildir. Referans kasa sanaldır; getiriler, gerçek emirler veya fon transferleri simüle edilerek üretilmemiştir.</p></footer>
 </div>
+<nav class="mobile-nav" aria-label="Mobil hızlı menü"><a href="#bugun">◉<span>Bugün</span></a><a href="#firsatlar">⌕<span>Stratejiler</span></a><a href="#portfoyler">◈<span>Kasalar</span></a><a href="#surum">◷<span>Güncellemeler</span></a></nav>
 </body></html>

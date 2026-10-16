@@ -148,7 +148,7 @@ function selectTab(next, scroll=false){
  activeTab=next;renderStrategies();renderWorkspace();
  if(scroll)$('arastirma').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
 }
-function renderAll(){renderHealth();renderBudget();renderStrategies();renderWorkspace();renderLogs()}
+function renderAll(){renderHealth();renderBudget();renderStrategies();renderWorkspace();renderLogs();window.ALTI_REPORT=report;document.dispatchEvent(new CustomEvent('alti:report-loaded',{detail:report}))}
 async function load(){
  $('refresh').disabled=true;
  try{
@@ -158,7 +158,7 @@ async function load(){
   if(!Array.isArray(data.strategies)||data.strategies.length!==6||data.live_orders_enabled!==false)throw new Error('Rapor güvenlik sözleşmesi geçersiz');
   report=data;renderAll();
  }catch(err){
-  if(!report){$('health-title').textContent='Yayın verisi açılamadı';$('health-description').textContent='Rapor okunamadı: '+err.message;
+  if(!report){document.dispatchEvent(new CustomEvent('alti:report-error',{detail:'Rapor okunamadı'}));$('health-title').textContent='Yayın verisi açılamadı';$('health-description').textContent='Rapor okunamadı: '+err.message;
     $('work-content').innerHTML=empty('Rapor bağlantısı yok','Önce python -m alti.worker, sonra yerel sunucu veya GitHub Pages yayını gerekiyor.');}
   else{$('global-warning').textContent='Yeni rapor yüklenemedi; görünen son snapshot geçmişe ait olabilir. Güncel işlem kararı için kullanmayın.';}
  }finally{$('refresh').disabled=false}

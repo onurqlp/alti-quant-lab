@@ -15,8 +15,8 @@ concurrency:
 
 jobs:
   scan:
-    # A demo-only publication does not run unit tests or contact exchanges.
-    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[demo-only]') }}
+    # UI-only content updates never run tests or contact exchange APIs.
+    if: ${{ github.event_name != 'push' || (!contains(github.event.head_commit.message, '[demo-only]') && !contains(github.event.head_commit.message, '[ui-only]')) }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -45,7 +45,7 @@ jobs:
 
   publish:
     needs: scan
-    # Publish after normal scan OR directly for demo-only content commits.
+    # Publish after normal scan OR directly for explicitly UI-only content commits.
     if: ${{ always() && (needs.scan.result == 'success' || needs.scan.result == 'skipped') }}
     runs-on: ubuntu-latest
     permissions:
