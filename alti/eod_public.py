@@ -71,12 +71,26 @@ def get_chart(symbol,fetcher=None):
         raise FeedError("INSUFFICIENT_DATA","Fewer than 260 valid adjusted daily closes")
     return days
 
-def collect(module,now=None,fetcher=None):
+def get_vendor_series(symbol,now,fetcher=None,nasdaq_fetcher=None):
+    try:
+        return get_chart(symbol,fetcher),"YAHOO_CHART_UNOFFICIAL","VENDOR_ADJCLOSE_UNVERIFIED"
+    except FeedError as e:
+        if e.code not in ("PROVIDER_HTTP_ERROR","NETWORK_ERROR","SOURCE_ERROR"):
+            raise
+    # Independent public website fallback: no rate-limit circumvention and
+    # no claim of dividend or split normalization.
+    from .eod_nasdaq import get as nasdaq_get
+    return nasdaq_get(symbol,now,nasdaq_fetcher),"NASDAQ_PUBLIC_HISTORY","RAW_UNADJUSTED"
+
+def collect(module,now=None,fetcher=None,nasdaq_fetcher=None):
     if module not in PAIR_BY_MODULE:
         raise FeedError("NOT_SUPPORTED","Only A1 and A2 observed price-pair inputs")
     now=now or dt.datetime.now(dt.timezone.utc)
     symbols=PAIR_BY_MODULE[module]
-    series=[get_chart(symbol,fetcher) for symbol in symbols]
+    records=[get_vendor_series(symbol,now,fetcher,nasdaq_fetcher) for symbol in symbols]
+    series=[r[0] for r in records]
+    vendors=[r[1] for r in records]
+    adjustments=[r[2] for r in records]
     aligned=sorted(set(series[0]).intersection(series[1]))
     # Ignore NY current calendar day: potentially still in progress or revised.
     latest_day=now.astimezone(ZoneInfo("America/New_York")).date().isoformat()
@@ -90,9 +104,10 @@ def collect(module,now=None,fetcher=None):
             for symbol,s in zip(symbols,series)}
     diff=round(twenty[symbols[0]]-twenty[symbols[1]],4)
     return {"status":"INPUTS_ONLY","data_label":"PUBLIC_EOD_UNLICENSED",
-            "source":"YAHOO_CHART_UNOFFICIAL","pair":list(symbols),
+            "source":vendors[0] if vendors[0]==vendors[1] else "MIXED_PUBLIC_EOD",
+            "source_by_symbol":dict(zip(symbols,vendors)),"pair":list(symbols),
             "market":"US_EQUITIES" if module=="A1" else "US_ETF",
-            "currency":"USD","adjustment_claim":"VENDOR_ADJCLOSE_UNVERIFIED",
+            "currency":"USD","adjustment_claim":("VENDOR_ADJCLOSE_UNVERIFIED" if all(v=="VENDOR_ADJCLOSE_UNVERIFIED" for v in adjustments) else "UNADJUSTED_OR_MIXED"),
             "last_complete_session":aligned[-1],"aligned_sessions":len(aligned),
             "observed_return_20d_percent":twenty,
             "relative_return_20d_pct_points":diff,
@@ -101,4 +116,4 @@ def collect(module,now=None,fetcher=None):
             "trade_ready":False,"borrow_verified":False,"fee_verified":False,
             "etf_nav_verified":False,"cointegration_oos_verified":False,
             "forward_pnl":None,"paper_fills":None,
-            "note":"Descriptive vendor-adjusted EOD observation, not issuer NAV or licensed executable quote"}
+            "note":"Historical daily closing-price observation; corporate actions adjustment may be unavailable, issuer NAV and trade rights unverified"}

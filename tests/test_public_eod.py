@@ -46,6 +46,24 @@ class PublicEod(unittest.TestCase):
             obj['chart']['result'][0]['indicators'].pop('adjclose')
             return json.dumps(obj).encode()
         with self.assertRaises(FeedError):collect('A1',NOW,bad)
+    def test_nasdaq_raw_eod_fallback_is_explicit_and_never_trade_ready(self):
+        def rate_limited(url):
+            raise FeedError('PROVIDER_HTTP_ERROR','Yahoo HTTP 429')
+        def nasdaq(url):
+            import datetime,json
+            rows=[];day=dt.date(2025,1,1)
+            while day<=dt.date(2026,10,16):
+                if day.weekday()<5:
+                    rows.append({'date':day.strftime('%m/%d/%Y'),'close':'$101.25'})
+                day+=dt.timedelta(days=1)
+            return json.dumps({'data':{'tradesTable':{'rows':rows}}}).encode()
+        for code in ['A1','A2']:
+            r=collect(code,NOW,rate_limited,nasdaq)
+            self.assertEqual(r['source'],'NASDAQ_PUBLIC_HISTORY')
+            self.assertEqual(r['adjustment_claim'],'UNADJUSTED_OR_MIXED')
+            self.assertGreaterEqual(r['aligned_sessions'],260)
+            self.assertFalse(r['redistribution_rights_verified'])
+            self.assertFalse(r['trade_ready'])
     def test_outdated_eod_fails_closed(self):
         with self.assertRaises(FeedError):collect('A2',NOW+dt.timedelta(days=16),fake)
 if __name__=='__main__':unittest.main()
