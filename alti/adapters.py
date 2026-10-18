@@ -13,6 +13,8 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 BINANCE = "https://fapi.binance.com"
+BINANCE_SPOT = "https://api.binance.com"
+KRAKEN = "https://api.kraken.com"
 OKX = "https://www.okx.com"
 DOCS = {
     "BINANCE": "https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History",
@@ -58,9 +60,13 @@ def positive(value, name):
 
 
 class PublicHTTP:
-    ALLOW = {BINANCE, OKX}
+    ALLOW = {BINANCE, BINANCE_SPOT, OKX, KRAKEN}
     def get(self, host, path, params=None):
-        if host not in self.ALLOW or not path.startswith('/api/') and not path.startswith('/fapi/'):
+        allowed=((host==BINANCE and path.startswith('/fapi/')) or
+                 (host==BINANCE_SPOT and path in ('/api/v3/depth',)) or
+                 (host==OKX and path.startswith('/api/v5/')) or
+                 (host==KRAKEN and path in ('/0/public/Depth','/0/public/AssetPairs')))
+        if not allowed:
             raise FeedError("INVALID_ENDPOINT", "Non-public or unauthorized market endpoint")
         url = host + path + ('?' + urlencode(params) if params else '')
         for attempt in range(2):
