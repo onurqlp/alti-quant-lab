@@ -64,7 +64,7 @@ class PublicHTTP:
     def get(self, host, path, params=None):
         allowed=((host==BINANCE and path.startswith('/fapi/')) or
                  (host==BINANCE_SPOT and path in ('/api/v3/depth',)) or
-                 (host==OKX and path.startswith('/api/v5/')) or
+                 (host==OKX and path in ('/api/v5/public/funding-rate','/api/v5/public/funding-rate-history','/api/v5/public/instruments','/api/v5/market/books','/api/v5/market/history-candles')) or
                  (host==KRAKEN and path in ('/0/public/Depth','/0/public/AssetPairs')))
         if not allowed:
             raise FeedError("INVALID_ENDPOINT", "Non-public or unauthorized market endpoint")
