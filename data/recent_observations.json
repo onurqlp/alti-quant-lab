@@ -648,5 +648,70 @@
     "paper_fill": "PAPER_NO_FILL",
     "realized_pnl": null,
     "mode": "NOT_VERIFIED"
+  },
+  {
+    "id": "aa7447cb9ba587dd88af",
+    "scan_id": "alti-20261018T0815Z",
+    "time_utc": "2026-10-18T08:15:45Z",
+    "strategy": "B1",
+    "kind": "SOURCE_ERROR",
+    "venue": "BINANCE",
+    "symbol": "BTCUSDT",
+    "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+    "paper_fill": "PAPER_NO_FILL",
+    "realized_pnl": null,
+    "mode": "NOT_VERIFIED"
+  },
+  {
+    "id": "074498c916f34e124fd7",
+    "scan_id": "alti-20261018T0815Z",
+    "time_utc": "2026-10-18T08:15:45Z",
+    "strategy": "B1",
+    "kind": "REJECTED",
+    "venue": null,
+    "symbol": "BTCUSDT",
+    "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
+    "paper_fill": "PAPER_NO_FILL",
+    "realized_pnl": null,
+    "mode": "NOT_VERIFIED"
+  },
+  {
+    "id": "91616146779bff63019a",
+    "scan_id": "alti-20261018T0815Z",
+    "time_utc": "2026-10-18T08:15:45Z",
+    "strategy": "B1",
+    "kind": "SOURCE_ERROR",
+    "venue": "BINANCE",
+    "symbol": "ETHUSDT",
+    "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+    "paper_fill": "PAPER_NO_FILL",
+    "realized_pnl": null,
+    "mode": "NOT_VERIFIED"
+  },
+  {
+    "id": "773d2adc8f85dbdb238a",
+    "scan_id": "alti-20261018T0815Z",
+    "time_utc": "2026-10-18T08:15:46Z",
+    "strategy": "B1",
+    "kind": "REJECTED",
+    "venue": null,
+    "symbol": "ETHUSDT",
+    "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
+    "paper_fill": "PAPER_NO_FILL",
+    "realized_pnl": null,
+    "mode": "NOT_VERIFIED"
+  },
+  {
+    "id": "878f0d5948f4c280154a",
+    "scan_id": "alti-20261018T0815Z",
+    "time_utc": "2026-10-18T08:15:46Z",
+    "strategy": "B2",
+    "kind": "SOURCE_ERROR",
+    "venue": null,
+    "symbol": "USDCUSDT",
+    "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/api/v3/depth",
+    "paper_fill": "PAPER_NO_FILL",
+    "realized_pnl": null,
+    "mode": "NOT_VERIFIED"
   }
 ]
