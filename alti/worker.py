@@ -12,6 +12,8 @@ from .adapters import PublicHTTP, FeedError, binance_funding, okx_funding, fundi
 from .risk import config, portfolio, strategies
 from .stablecoin import collect as stablecoin_collect
 from .equity_pairs import run_a1
+from .treasury import collect as treasury_collect
+from .basket import collect as basket_collect
 
 ROOT=Path(__file__).resolve().parent.parent
 SITE=ROOT/'site'; DATA=ROOT/'data'
@@ -112,6 +114,24 @@ def build_report(http=None, ts=None):
         reason=e.detail if isinstance(e,FeedError) else f'Unexpected {type(e).__name__} in orderbook'
         errors.append({'venue':'BINANCE+OKX','symbol':'USDCUSDT','status':code,'message':reason})
         events.append(observation(scan,'B2','SOURCE_ERROR',f'{code}: {reason}',symbol='USDCUSDT'))
+    # A3 read-only daily spot inputs, not a statistically validated strategy.
+    basket=None
+    try:
+        basket=basket_collect(http,time_ms)
+        events.append(observation(scan,'A3','WATCH_ONLY','Verified spot basket input candles; rank/OOS and borrow missing'))
+    except (FeedError,KeyError,TypeError,ValueError,OverflowError) as e:
+        errors.append({'venue':'OKX','symbol':'BTC+ETH+SOL','status':getattr(e,'code','INVALID_DATA'),
+                       'message':str(e)[:240]})
+        events.append(observation(scan,'A3','SOURCE_ERROR',str(e)[:180]))
+    # Official Treasury par yields are T0 context only, not dealer repo prices.
+    treasury=None
+    try:
+        treasury=treasury_collect(dt)
+        events.append(observation(scan,'T0','WATCH_ONLY','Official Treasury par yield context, no repo quote'))
+    except (FeedError,KeyError,TypeError,ValueError,OverflowError) as e:
+        errors.append({'venue':'US_TREASURY','symbol':'YIELD_CURVE','status':getattr(e,'code','INVALID_DATA'),
+                       'message':str(e)[:240]})
+        events.append(observation(scan,'T0','SOURCE_ERROR',str(e)[:180]))
     cmp_by_symbol={}
     for symbol in config()['symbols']:
         p=[x for x in funding if x['symbol']==symbol]
@@ -124,7 +144,15 @@ def build_report(http=None, ts=None):
         if item['id']=='B2':
             item['data_label']='READ_ONLY_LIVE' if stable else 'NOT_CONNECTED'
             item['status']='SCREEN_ONLY' if stable else 'SOURCE_ERROR'
-            item['reason']='Two-way book snapshots, but missing Binance exchange quote timestamp and verified fees/transfer route' if stable else 'No validated two-venue quote screen'
+            item['reason']='Two-way observed orderbook; fees and quote simultaneity unverified' if stable else 'No validated two-venue quote screen'
+        if item['id']=='A3':
+            item['data_label']='READ_ONLY_LIVE' if basket else 'NOT_CONNECTED'
+            item['status']='INPUTS_ONLY' if basket else 'SOURCE_ERROR'
+            item['reason']='BTC ETH SOL daily inputs available; Johansen/OOS/borrow unverified' if basket else 'OKX basket inputs missing'
+        if item['id']=='T0':
+            item['data_label']='REFERENCE_ONLY' if treasury else 'NOT_CONNECTED'
+            item['status']='REFERENCE_ONLY' if treasury else 'SOURCE_ERROR'
+            item['reason']='Treasury par yield curve available; dealer repo and dirty prices missing' if treasury else 'Treasury reference source unavailable'
     a1=run_a1(now=dt)
     for item in items:
         if item['id']=='A1':
@@ -133,7 +161,7 @@ def build_report(http=None, ts=None):
             item['reason']=a1['reason']
             item['formation_window']=180 if a1['status']=='RESEARCH_ONLY' else None
             item['oos_window']=40 if a1['status']=='RESEARCH_ONLY' else None
-    live_count=len(funding)+(1 if stable else 0)
+    live_count=len(funding)+(1 if stable else 0)+(1 if basket else 0)+(1 if treasury else 0)
     report={
         'product':'ALTI QUANT RESEARCH LAB','version':'1.0.0','generated_at_utc':asz(dt),
         'scan_id':scan,'last_successful_scan_utc':None,
@@ -143,7 +171,7 @@ def build_report(http=None, ts=None):
         'live_orders_enabled':False,'verified_real_pnl':None,'paper_pnl':None,'synthetic_data_in_report':False,
         'market_hours':{'crypto':'24/7 (scheduled public API snapshots)','equities':'NOT_CONNECTED','bonds_repo':'NOT_CONNECTED'},
         'portfolio':portfolio(), 'strategies':items, 'funding_records':funding,
-        'funding_comparisons':cmp_by_symbol,'stablecoin':stable,'a1_research':a1,'provider_health':health,
+        'funding_comparisons':cmp_by_symbol,'stablecoin':stable,'a3_basket':basket,'t0_treasury':treasury,'a1_research':a1,'provider_health':health,
         'errors':errors, 'recent_observations':[],'observation_counts':{},
         'warnings':['Market data is read-only public research, not an executable price/offer.',
                     'Funding differences are not guaranteed cashflows; basis/hedge/fees/borrow/settlement may dominate.',
