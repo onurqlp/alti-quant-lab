@@ -11,6 +11,7 @@ from pathlib import Path
 from .adapters import PublicHTTP, FeedError, binance_funding, okx_funding, funding_comparison
 from .risk import config, portfolio, strategies
 from .stablecoin import collect as stablecoin_collect
+from .equity_pairs import run_a1
 
 ROOT=Path(__file__).resolve().parent.parent
 SITE=ROOT/'site'; DATA=ROOT/'data'
@@ -124,6 +125,14 @@ def build_report(http=None, ts=None):
             item['data_label']='READ_ONLY_LIVE' if stable else 'NOT_CONNECTED'
             item['status']='SCREEN_ONLY' if stable else 'SOURCE_ERROR'
             item['reason']='Two-way book snapshots, but missing Binance exchange quote timestamp and verified fees/transfer route' if stable else 'No validated two-venue quote screen'
+    a1=run_a1(now=dt)
+    for item in items:
+        if item['id']=='A1':
+            item['status']=a1['status']
+            item['data_label']=a1['data_label']
+            item['reason']=a1['reason']
+            item['formation_window']=180 if a1['status']=='RESEARCH_ONLY' else None
+            item['oos_window']=40 if a1['status']=='RESEARCH_ONLY' else None
     live_count=len(funding)+(1 if stable else 0)
     report={
         'product':'ALTI QUANT RESEARCH LAB','version':'1.0.0','generated_at_utc':asz(dt),
@@ -134,7 +143,7 @@ def build_report(http=None, ts=None):
         'live_orders_enabled':False,'verified_real_pnl':None,'paper_pnl':None,'synthetic_data_in_report':False,
         'market_hours':{'crypto':'24/7 (scheduled public API snapshots)','equities':'NOT_CONNECTED','bonds_repo':'NOT_CONNECTED'},
         'portfolio':portfolio(), 'strategies':items, 'funding_records':funding,
-        'funding_comparisons':cmp_by_symbol,'stablecoin':stable,'provider_health':health,
+        'funding_comparisons':cmp_by_symbol,'stablecoin':stable,'a1_research':a1,'provider_health':health,
         'errors':errors, 'recent_observations':[],'observation_counts':{},
         'warnings':['Market data is read-only public research, not an executable price/offer.',
                     'Funding differences are not guaranteed cashflows; basis/hedge/fees/borrow/settlement may dominate.',

@@ -29,9 +29,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run four essential contract tests
+      - name: Install A1 research statistical dependencies
+        run: python -m pip install --disable-pip-version-check "numpy>=1.26,<3" "statsmodels>=0.14,<0.15"
+      - name: Run read-only contract tests
         run: python -m unittest discover -s tests -q
       - name: Scan official public market-data endpoints (no keys, no orders)
+        env:
+          ALTI_A1_API_KEY: ${{ secrets.ALTI_A1_API_KEY }}
+          ALTI_A1_API_SECRET: ${{ secrets.ALTI_A1_API_SECRET }}
+          ALTI_A1_DATA_RIGHTS: ${{ vars.ALTI_A1_DATA_RIGHTS }}
+          ALTI_A1_PUBLIC_DERIVED_RIGHTS: ${{ vars.ALTI_A1_PUBLIC_DERIVED_RIGHTS }}
         run: python -m alti.worker
       - name: Commit append-only audit and latest atomic snapshot
         run: |
