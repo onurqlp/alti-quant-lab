@@ -1,9 +1,9 @@
 {
   "product": "ALTI QUANT RESEARCH LAB",
   "version": "1.0.0",
-  "generated_at_utc": "2026-11-08T00:51:09Z",
-  "scan_id": "alti-20261108T0051Z",
-  "last_successful_scan_utc": "2026-11-08T00:51:09Z",
+  "generated_at_utc": "2026-11-08T06:57:26Z",
+  "scan_id": "alti-20261108T0657Z",
+  "last_successful_scan_utc": "2026-11-08T06:57:26Z",
   "scan_status": "PARTIAL_LIVE",
   "mode": "READ_ONLY_LIVE",
   "live_source_count": 7,
@@ -185,11 +185,11 @@
       "rate_unit": "SIGNED_FRACTION_PER_EVENT",
       "last_realized_rate_fraction": 9.14028725214e-05,
       "last_realized_time_utc": "2026-11-08T00:00:00Z",
-      "last_settlement_age_hours": 0.85,
+      "last_settlement_age_hours": 6.96,
       "interval_hours": 8.0,
       "interval_source": "VERIFIED_SETTLEMENT_HISTORY",
       "next_funding_time_utc": "2026-11-08T08:00:00Z",
-      "indicative_rate_fraction": 8.60153284638e-05,
+      "indicative_rate_fraction": 3.54892112175e-05,
       "indicative_is_realized": false,
       "daily_observed_run_rate_fraction": 0.0002742086,
       "historical_events": [
@@ -252,7 +252,7 @@
         "exchange_timestamp_available": false,
         "market_quote_age_seconds": null
       },
-      "received_utc": "2026-11-08T00:51:09Z",
+      "received_utc": "2026-11-08T06:57:26Z",
       "source_url": "https://www.okx.com/docs-v5/en/",
       "source_read_only": true,
       "access_to_trading": "UNVERIFIED"
@@ -265,11 +265,11 @@
       "rate_unit": "SIGNED_FRACTION_PER_EVENT",
       "last_realized_rate_fraction": 6.13119741969e-05,
       "last_realized_time_utc": "2026-11-08T00:00:00Z",
-      "last_settlement_age_hours": 0.85,
+      "last_settlement_age_hours": 6.96,
       "interval_hours": 8.0,
       "interval_source": "VERIFIED_SETTLEMENT_HISTORY",
       "next_funding_time_utc": "2026-11-08T08:00:00Z",
-      "indicative_rate_fraction": 5.47816710098e-05,
+      "indicative_rate_fraction": 5.01957072719e-05,
       "indicative_is_realized": false,
       "daily_observed_run_rate_fraction": 0.0001839359,
       "historical_events": [
@@ -332,7 +332,7 @@
         "exchange_timestamp_available": false,
         "market_quote_age_seconds": null
       },
-      "received_utc": "2026-11-08T00:51:09Z",
+      "received_utc": "2026-11-08T06:57:26Z",
       "source_url": "https://www.okx.com/docs-v5/en/",
       "source_read_only": true,
       "access_to_trading": "UNVERIFIED"
@@ -363,22 +363,22 @@
     "fallback_used": true,
     "binance_source_asof_utc": null,
     "secondary_source_asof_utc": null,
-    "binance_received_utc": "2026-11-08T00:51:09Z",
-    "received_at_utc": "2026-11-08T00:51:09Z",
-    "okx_book_asof_utc": "2026-11-08T00:51:10.702000Z",
-    "okx_book_age_seconds": -1.69,
+    "binance_received_utc": "2026-11-08T06:57:26Z",
+    "received_at_utc": "2026-11-08T06:57:26Z",
+    "okx_book_asof_utc": "2026-11-08T06:57:27.652000Z",
+    "okx_book_age_seconds": -1.49,
     "best_quotes": {
       "OKX": {
-        "bid": 1.00115,
-        "ask": 1.00116,
-        "bid_qty_base": 1185284.009606,
-        "ask_qty_base": 6230.18543
+        "bid": 1.00122,
+        "ask": 1.00123,
+        "bid_qty_base": 986283.454167,
+        "ask_qty_base": 2976.141675
       },
       "KRAKEN": {
-        "bid": 1.0011,
-        "ask": 1.0012,
-        "bid_qty_base": 557728.869,
-        "ask_qty_base": 771247.059
+        "bid": 1.0012,
+        "ask": 1.0013,
+        "bid_qty_base": 320572.634,
+        "ask_qty_base": 849954.228
       }
     },
     "depth_levels": 20,
@@ -388,9 +388,9 @@
         "buy_venue": "OKX",
         "sell_venue": "KRAKEN",
         "base_units": 1000.0,
-        "buy_vwap": 1.00116,
-        "sell_vwap": 1.0011,
-        "gross_spread_bps": -0.599,
+        "buy_vwap": 1.00123,
+        "sell_vwap": 1.0012,
+        "gross_spread_bps": -0.3,
         "net_spread_bps": null,
         "net_pnl": null,
         "fees_known": false,
@@ -401,9 +401,9 @@
         "buy_venue": "KRAKEN",
         "sell_venue": "OKX",
         "base_units": 1000.0,
-        "buy_vwap": 1.0012,
-        "sell_vwap": 1.00115,
-        "gross_spread_bps": -0.499,
+        "buy_vwap": 1.0013,
+        "sell_vwap": 1.00122,
+        "gross_spread_bps": -0.799,
         "net_spread_bps": null,
         "net_pnl": null,
         "fees_known": false,
@@ -471,7 +471,7 @@
       "30Y": 5.26
     },
     "slope_10y_minus_2y_pct_points": 0.35,
-    "days_since_source": 2.04,
+    "days_since_source": 2.29,
     "data_label": "REFERENCE_ONLY",
     "repo_rate": null,
     "dirty_price": null,
@@ -575,28 +575,28 @@
       "symbol": "BTCUSDT",
       "status": "ACCESS_BLOCKED",
       "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
-      "received_utc": "2026-11-08T00:51:09Z"
+      "received_utc": "2026-11-08T06:57:26Z"
     },
     {
       "venue": "OKX",
       "symbol": "BTCUSDT",
       "status": "READ_ONLY_LIVE",
       "message": "Historical event and contract metadata validated",
-      "received_utc": "2026-11-08T00:51:09Z"
+      "received_utc": "2026-11-08T06:57:26Z"
     },
     {
       "venue": "BINANCE",
       "symbol": "ETHUSDT",
       "status": "ACCESS_BLOCKED",
       "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
-      "received_utc": "2026-11-08T00:51:09Z"
+      "received_utc": "2026-11-08T06:57:26Z"
     },
     {
       "venue": "OKX",
       "symbol": "ETHUSDT",
       "status": "READ_ONLY_LIVE",
       "message": "Historical event and contract metadata validated",
-      "received_utc": "2026-11-08T00:51:09Z"
+      "received_utc": "2026-11-08T06:57:26Z"
     }
   ],
   "errors": [
@@ -605,17 +605,134 @@
       "symbol": "BTCUSDT",
       "status": "ACCESS_BLOCKED",
       "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
-      "received_utc": "2026-11-08T00:51:09Z"
+      "received_utc": "2026-11-08T06:57:26Z"
     },
     {
       "venue": "BINANCE",
       "symbol": "ETHUSDT",
       "status": "ACCESS_BLOCKED",
       "message": "HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
-      "received_utc": "2026-11-08T00:51:09Z"
+      "received_utc": "2026-11-08T06:57:26Z"
     }
   ],
   "recent_observations": [
+    {
+      "id": "c31faaf6bc060f401e01",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:37Z",
+      "strategy": "A2",
+      "kind": "WATCH_ONLY",
+      "venue": null,
+      "symbol": null,
+      "reason": "Historical matched US price inputs, rights/borrow/NAV not confirmed",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "READ_ONLY_LIVE"
+    },
+    {
+      "id": "c30de06a996b0d9a3dfe",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:31Z",
+      "strategy": "A1",
+      "kind": "WATCH_ONLY",
+      "venue": null,
+      "symbol": null,
+      "reason": "Historical matched US price inputs, rights/borrow/NAV not confirmed",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "READ_ONLY_LIVE"
+    },
+    {
+      "id": "05f3ff097ed3efba016d",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:29Z",
+      "strategy": "T0",
+      "kind": "WATCH_ONLY",
+      "venue": null,
+      "symbol": null,
+      "reason": "Official Treasury par yield context, no repo quote",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "READ_ONLY_LIVE"
+    },
+    {
+      "id": "8651e50b2a9aaaf729ea",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:28Z",
+      "strategy": "A3",
+      "kind": "WATCH_ONLY",
+      "venue": null,
+      "symbol": null,
+      "reason": "Verified spot basket input candles; rank/OOS and borrow missing",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "READ_ONLY_LIVE"
+    },
+    {
+      "id": "025935c693ed20cda350",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:28Z",
+      "strategy": "B2",
+      "kind": "WATCH_ONLY",
+      "venue": null,
+      "symbol": "USDCUSDT",
+      "reason": "Two-venue USDC/USDT quote screen only: timestamp, fees and transfer access not verified",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "READ_ONLY_LIVE"
+    },
+    {
+      "id": "10782ac4365a6f2ff2fb",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:27Z",
+      "strategy": "B1",
+      "kind": "REJECTED",
+      "venue": null,
+      "symbol": "ETHUSDT",
+      "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
+    {
+      "id": "98f71df7da57c3dddfa2",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:26Z",
+      "strategy": "B1",
+      "kind": "SOURCE_ERROR",
+      "venue": "BINANCE",
+      "symbol": "ETHUSDT",
+      "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
+    {
+      "id": "1287390660ef20190d3b",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:26Z",
+      "strategy": "B1",
+      "kind": "REJECTED",
+      "venue": null,
+      "symbol": "BTCUSDT",
+      "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
+    {
+      "id": "7701b71f631ab1de5944",
+      "scan_id": "alti-20261108T0657Z",
+      "time_utc": "2026-11-08T06:57:26Z",
+      "strategy": "B1",
+      "kind": "SOURCE_ERROR",
+      "venue": "BINANCE",
+      "symbol": "BTCUSDT",
+      "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
+      "paper_fill": "PAPER_NO_FILL",
+      "realized_pnl": null,
+      "mode": "NOT_VERIFIED"
+    },
     {
       "id": "ccea26681a88fe4df215",
       "scan_id": "alti-20261108T0051Z",
@@ -1790,123 +1907,6 @@
       "id": "c4ba1de47326b35f214b",
       "scan_id": "alti-20261105T1733Z",
       "time_utc": "2026-11-05T17:33:30Z",
-      "strategy": "A2",
-      "kind": "WATCH_ONLY",
-      "venue": null,
-      "symbol": null,
-      "reason": "Historical matched US price inputs, rights/borrow/NAV not confirmed",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "READ_ONLY_LIVE"
-    },
-    {
-      "id": "dcf88e53ff810e5249e5",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:26Z",
-      "strategy": "A1",
-      "kind": "WATCH_ONLY",
-      "venue": null,
-      "symbol": null,
-      "reason": "Historical matched US price inputs, rights/borrow/NAV not confirmed",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "READ_ONLY_LIVE"
-    },
-    {
-      "id": "bf35c30003380fe40f0a",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:21Z",
-      "strategy": "T0",
-      "kind": "WATCH_ONLY",
-      "venue": null,
-      "symbol": null,
-      "reason": "Official Treasury par yield context, no repo quote",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "READ_ONLY_LIVE"
-    },
-    {
-      "id": "78a2021998055a13ad38",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:21Z",
-      "strategy": "A3",
-      "kind": "WATCH_ONLY",
-      "venue": null,
-      "symbol": null,
-      "reason": "Verified spot basket input candles; rank/OOS and borrow missing",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "READ_ONLY_LIVE"
-    },
-    {
-      "id": "a04639ef8a3e90ea9a18",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:20Z",
-      "strategy": "B2",
-      "kind": "WATCH_ONLY",
-      "venue": null,
-      "symbol": "USDCUSDT",
-      "reason": "Two-venue USDC/USDT quote screen only: timestamp, fees and transfer access not verified",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "READ_ONLY_LIVE"
-    },
-    {
-      "id": "2c239543fea9130a2eb0",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:20Z",
-      "strategy": "B1",
-      "kind": "REJECTED",
-      "venue": null,
-      "symbol": "ETHUSDT",
-      "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "NOT_VERIFIED"
-    },
-    {
-      "id": "a002c4636f8ead30d5f7",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:19Z",
-      "strategy": "B1",
-      "kind": "SOURCE_ERROR",
-      "venue": "BINANCE",
-      "symbol": "ETHUSDT",
-      "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "NOT_VERIFIED"
-    },
-    {
-      "id": "2e32424ac7204eb18159",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:19Z",
-      "strategy": "B1",
-      "kind": "REJECTED",
-      "venue": null,
-      "symbol": "BTCUSDT",
-      "reason": "CROSS_VENUE_MISSING: Only one or zero validated venues",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "NOT_VERIFIED"
-    },
-    {
-      "id": "8362033c8a9d80e63248",
-      "scan_id": "alti-20261105T1733Z",
-      "time_utc": "2026-11-05T17:33:19Z",
-      "strategy": "B1",
-      "kind": "SOURCE_ERROR",
-      "venue": "BINANCE",
-      "symbol": "BTCUSDT",
-      "reason": "ACCESS_BLOCKED: HTTP 451 from https://fapi.binance.com/fapi/v1/premiumIndex",
-      "paper_fill": "PAPER_NO_FILL",
-      "realized_pnl": null,
-      "mode": "NOT_VERIFIED"
-    },
-    {
-      "id": "2cc61f33e17659c340c3",
-      "scan_id": "alti-20261105T0902Z",
-      "time_utc": "2026-11-05T09:02:42Z",
       "strategy": "A2",
       "kind": "WATCH_ONLY",
       "venue": null,
